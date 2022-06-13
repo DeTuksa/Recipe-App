@@ -26,77 +26,79 @@ class LoginView extends GetView<AuthenticationController> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Column(
-                  children: [
-                    Container(
-                      width: Get.width,
-                      height: 70,
-                      color: Colors.white,
-                      padding: const EdgeInsets.symmetric(horizontal: 12),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: const [
-                          Icon(
-                            Icons.arrow_back
-                          ),
-                          AppSpacer.W10,
-                          Text(
-                            'Welcome back',
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.w600
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                    Container(
-                      height: 10,
-                      width: Get.width,
-                      color: AppColor.appGrey6,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 15),
-                      child: Container(
-                        padding: const EdgeInsets.only(top: 20),
-                        child: SingleChildScrollView(
-                          physics: const BouncingScrollPhysics(),
-                          child: Column(
+                Expanded(
+                  child: SingleChildScrollView(
+                    physics: const BouncingScrollPhysics(),
+                    child: Column(
+                      children: [
+                        Container(
+                          width: Get.width,
+                          height: 70,
+                          color: Colors.white,
+                          padding: const EdgeInsets.symmetric(horizontal: 12),
+                          child: Row(
                             mainAxisSize: MainAxisSize.max,
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              const Text(
-                                'Input your credentials',
+                            children: const [
+                              Icon(
+                                Icons.arrow_back
+                              ),
+                              AppSpacer.W10,
+                              Text(
+                                'Welcome back',
                                 style: TextStyle(
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.w700,
-                                  color: Colors.black
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w600
                                 ),
-                              ),
-                              AppSpacer.H40,
-                              AppInputField(
-
-                              ),
-                              AppSpacer.H30,
-                              AppInputField(),
-                              AppSpacer.H10,
-                              const Text(
-                                'Forgot Password?',
-                                style: TextStyle(
-                                    fontSize: 16,
-                                    color: Colors.grey
-                                ),
-                              ),
-                              AppSpacer.H30,
+                              )
                             ],
                           ),
                         ),
-                      ),
-                    )
-                  ],
+                        Container(
+                          height: 10,
+                          width: Get.width,
+                          color: AppColor.appGrey6,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 15),
+                          child: Container(
+                            padding: const EdgeInsets.only(top: 20),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                const Text(
+                                  'Input your credentials',
+                                  style: TextStyle(
+                                    fontSize: 24,
+                                    fontWeight: FontWeight.w700,
+                                    color: Colors.black
+                                  ),
+                                ),
+                                AppSpacer.H40,
+                                AppInputField(
+
+                                ),
+                                AppSpacer.H30,
+                                AppInputField(),
+                                AppSpacer.H10,
+                                const Text(
+                                  'Forgot Password?',
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      color: Colors.grey
+                                  ),
+                                ),
+                                AppSpacer.H30,
+                              ],
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
