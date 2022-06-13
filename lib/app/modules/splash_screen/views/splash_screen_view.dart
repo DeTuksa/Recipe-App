@@ -1,6 +1,8 @@
 import 'package:daisy_recipe/app/data/constants/app_colors.dart';
 import 'package:daisy_recipe/app/data/constants/asset_paths.dart';
 import 'package:daisy_recipe/app/data/constants/spacers.dart';
+import 'package:daisy_recipe/app/modules/authentication/views/login_view.dart';
+import 'package:daisy_recipe/app/modules/authentication/views/signup_view.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -35,40 +37,46 @@ class SplashScreenView extends GetView<SplashScreenController> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Container(
-                    width: Get.width * 0.8,
-                    height: 50,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: AppColor.primaryRed
-                    ),
-                    child: const Center(
-                      child: Text(
-                        'Create Account',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16
+                  GestureDetector(
+                    onTap: () => Get.to(() => LoginView()),
+                    child: Container(
+                      width: Get.width * 0.8,
+                      height: 50,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(
+                              color: AppColor.primaryRed
+                          ),
+                          color: const Color.fromRGBO(6, 9, 16, 0.7)
+                      ),
+                      child: const Center(
+                        child: Text(
+                          'Login',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16
+                          ),
                         ),
                       ),
                     ),
                   ),
                   AppSpacer.H16,
-                  Container(
-                    width: Get.width * 0.8,
-                    height: 50,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                      border: Border.all(
-                        color: AppColor.primaryRed
+                  GestureDetector(
+                    onTap: () => Get.to(() => SignupView()),
+                    child: Container(
+                      width: Get.width * 0.8,
+                      height: 50,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: AppColor.primaryRed
                       ),
-                      color: const Color.fromRGBO(6, 9, 16, 0.7)
-                    ),
-                    child: const Center(
-                      child: Text(
-                        'Login',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16
+                      child: const Center(
+                        child: Text(
+                          'Create Account',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16
+                          ),
                         ),
                       ),
                     ),

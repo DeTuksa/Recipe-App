@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../modules/authentication/bindings/authentication_binding.dart';
+import '../modules/authentication/views/login_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/splash_screen/bindings/splash_screen_binding.dart';
@@ -22,6 +24,11 @@ class AppPages {
       name: _Paths.SPLASH_SCREEN,
       page: () => SplashScreenView(),
       binding: SplashScreenBinding(),
+    ),
+    GetPage(
+      name: _Paths.AUTHENTICATION,
+      page: () => LoginView(),
+      binding: AuthenticationBinding(),
     ),
   ];
 }
