@@ -1,5 +1,6 @@
 import 'package:daisy_recipe/app/data/constants/app_colors.dart';
 import 'package:daisy_recipe/app/data/constants/spacers.dart';
+import 'package:daisy_recipe/app/modules/home/views/home_view.dart';
 import 'package:daisy_recipe/app/modules/widgets/app_input_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -98,6 +99,7 @@ class SignupView extends GetView {
                   padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
                   child: Center(
                     child: GestureDetector(
+                      onTap: () => Get.to(() => HomeView()),
                       child: Container(
                         width: Get.width,
                         height: 50,
