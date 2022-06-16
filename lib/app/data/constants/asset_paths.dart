@@ -10,4 +10,6 @@ class AssetPath {
   static const bookmarkInactive = 'assets/icons/bookmark_inactive.svg';
   static const notificationInactive = 'assets/icons/notification_inactive.svg';
   static const profileInactive = 'assets/icons/profile_inactive.svg';
+  static const trendingDummy = 'assets/images/video.png';
+  static const popularDummy = 'assets/images/popular.png';
 }
