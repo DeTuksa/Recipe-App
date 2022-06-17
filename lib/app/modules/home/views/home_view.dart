@@ -5,6 +5,7 @@ import 'package:daisy_recipe/app/data/constants/asset_paths.dart';
 import 'package:daisy_recipe/app/data/constants/spacers.dart';
 import 'package:daisy_recipe/app/modules/widgets/botoom_bar_icon.dart';
 import 'package:daisy_recipe/app/modules/widgets/popular_card.dart';
+import 'package:daisy_recipe/app/modules/widgets/recent_card.dart';
 import 'package:daisy_recipe/app/modules/widgets/trending_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +29,7 @@ class HomeView extends GetView<HomeController> {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.max,
           children:  [
-            Text(
+            const Text(
               'Find best recipes\nfor cooking',
               style: TextStyle(
                 fontSize: 24,
@@ -125,6 +126,52 @@ class HomeView extends GetView<HomeController> {
                 itemCount: 3,
                 itemBuilder: (context, index) {
                   return const PopularCard();
+                },
+              ),
+            ),
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  'Rcent recipe',
+                  style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w700
+                  ),
+                ),
+                Row(
+                  children: [
+                    const Text(
+                      'See all',
+                      style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w700,
+                          color: AppColor.primaryRed
+                      ),
+                    ),
+                    AppSpacer.W5,
+                    Icon(
+                      Platform.isIOS ?
+                      Icons.arrow_forward_ios :
+                      Icons.arrow_forward,
+                      color: AppColor.primaryRed,
+                    )
+                  ],
+                )
+              ],
+            ),
+            AppSpacer.H16,
+            SizedBox(
+              width: Get.width - 40,
+              height: 190,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                physics: const BouncingScrollPhysics(),
+                itemCount: 3,
+                itemBuilder: (context, index) {
+                  return const RecentCard();
                 },
               ),
             ),

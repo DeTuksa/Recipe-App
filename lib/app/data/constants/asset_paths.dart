@@ -12,4 +12,5 @@ class AssetPath {
   static const profileInactive = 'assets/icons/profile_inactive.svg';
   static const trendingDummy = 'assets/images/video.png';
   static const popularDummy = 'assets/images/popular.png';
+  static const recentDummy = 'assets/images/recentDummy.png';
 }
