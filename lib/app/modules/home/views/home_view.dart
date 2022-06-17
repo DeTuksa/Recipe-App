@@ -22,7 +22,7 @@ class HomeView extends GetView<HomeController> {
       body: GetBuilder<HomeController>(
         init: HomeController(),
         builder: (ctrl) {
-          return ctrl.body[ctrl.bodyIndex];
+          return ctrl.body[ctrl.bodyIndex.value];
         },
       ),
       bottomNavigationBar: BottomAppBar(
@@ -35,23 +35,23 @@ class HomeView extends GetView<HomeController> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             mainAxisSize: MainAxisSize.max,
             children: [
-              CustomBottomItem(
-                asset: AssetPath.homeActive,
+              Obx(() => CustomBottomItem(
+                asset: homeCtrl.bodyIndex.value == 0 ? AssetPath.homeActive : AssetPath.homeInactive,
                 function: () => homeCtrl.changeBodyIndex(0),
-              ),
-              CustomBottomItem(
-                asset: AssetPath.bookmarkInactive,
+              )),
+              Obx(() => CustomBottomItem(
+                asset: homeCtrl.bodyIndex.value == 1 ? AssetPath.bookmarkActive : AssetPath.bookmarkInactive,
                 function: () => homeCtrl.changeBodyIndex(1),
-              ),
+              )),
               AppSpacer.W10,
-              CustomBottomItem(
-                asset: AssetPath.notificationInactive,
+              Obx(() => CustomBottomItem(
+                asset: homeCtrl.bodyIndex.value == 2 ? AssetPath.notificationActive : AssetPath.notificationInactive,
                 function: () => homeCtrl.changeBodyIndex(2),
-              ),
-              CustomBottomItem(
-                asset: AssetPath.profileInactive,
+              )),
+              Obx(() => CustomBottomItem(
+                asset: homeCtrl.bodyIndex.value == 3 ? AssetPath.profileActive : AssetPath.profileInactive,
                 function: () => homeCtrl.changeBodyIndex(3),
-              )
+              ))
             ],
           ),
         ),

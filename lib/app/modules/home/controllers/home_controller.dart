@@ -15,7 +15,7 @@ class HomeController extends GetxController {
     const NotificationTabView(),
     const ProfileTabView()
   ];
-  int bodyIndex = 0;
+  var bodyIndex = 0.obs;
   @override
   void onInit() {
     super.onInit();
@@ -31,7 +31,7 @@ class HomeController extends GetxController {
   void increment() => count.value++;
 
   changeBodyIndex(int newIndex) {
-    bodyIndex = newIndex;
+    bodyIndex.value = newIndex;
     update();
   }
 }
