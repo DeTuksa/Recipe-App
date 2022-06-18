@@ -1,4 +1,4 @@
-import 'package:daisy_recipe/app/data/constants/app_colors.dart';
+import 'package:daisy_recipe/app/data/constants/app_theme.dart';
 import 'package:daisy_recipe/app/data/constants/spacers.dart';
 import 'package:daisy_recipe/app/modules/home/views/home_view.dart';
 import 'package:daisy_recipe/app/modules/widgets/app_input_widget.dart';
@@ -59,7 +59,7 @@ class LoginView extends GetView<AuthenticationController> {
                         Container(
                           height: 10,
                           width: Get.width,
-                          color: AppColor.appGrey6,
+                          color: AppTheme.appGrey6,
                         ),
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -111,7 +111,7 @@ class LoginView extends GetView<AuthenticationController> {
                         height: 50,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
-                            color: AppColor.primaryRed
+                            color: AppTheme.primaryRed
                         ),
                         child: const Center(
                           child: Text(

@@ -1,4 +1,4 @@
-import 'package:daisy_recipe/app/data/constants/app_colors.dart';
+import 'package:daisy_recipe/app/data/constants/app_theme.dart';
 import 'package:daisy_recipe/app/data/constants/asset_paths.dart';
 import 'package:daisy_recipe/app/data/constants/spacers.dart';
 import 'package:daisy_recipe/app/modules/widgets/botoom_bar_icon.dart';
@@ -58,7 +58,7 @@ class HomeView extends GetView<HomeController> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
-        backgroundColor: AppColor.primaryRed,
+        backgroundColor: AppTheme.primaryRed,
         child: const Center(
           child: Icon(
             Icons.add,

@@ -1,4 +1,4 @@
-import 'package:daisy_recipe/app/data/constants/app_colors.dart';
+import 'package:daisy_recipe/app/data/constants/app_theme.dart';
 import 'package:daisy_recipe/app/data/constants/asset_paths.dart';
 import 'package:daisy_recipe/app/data/constants/spacers.dart';
 import 'package:daisy_recipe/app/modules/authentication/views/login_view.dart';
@@ -45,7 +45,7 @@ class SplashScreenView extends GetView<SplashScreenController> {
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           border: Border.all(
-                              color: AppColor.primaryRed
+                              color: AppTheme.primaryRed
                           ),
                           color: const Color.fromRGBO(6, 9, 16, 0.7)
                       ),
@@ -68,7 +68,7 @@ class SplashScreenView extends GetView<SplashScreenController> {
                       height: 50,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
-                          color: AppColor.primaryRed
+                          color: AppTheme.primaryRed
                       ),
                       child: const Center(
                         child: Text(

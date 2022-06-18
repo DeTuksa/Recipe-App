@@ -1,3 +1,4 @@
+import 'package:daisy_recipe/app/data/constants/app_theme.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -13,6 +14,7 @@ void main() {
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
       debugShowCheckedModeBanner: false,
+      theme: AppTheme.theme,
     ),
   );
 }

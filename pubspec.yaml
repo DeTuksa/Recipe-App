@@ -24,3 +24,24 @@ flutter:
     - assets/images/
     - assets/icons/
 
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: fonts/Poppins-Black.ttf
+        - asset: fonts/Poppins-BlackItalic.ttf
+        - asset: fonts/Poppins-Bold.ttf
+        - asset: fonts/Poppins-BoldItalic.ttf
+        - asset: fonts/Poppins-ExtraBold.ttf
+        - asset: fonts/Poppins-ExtraBoldItalic.ttf
+        - asset: fonts/Poppins-ExtraLight.ttf
+        - asset: fonts/Poppins-ExtraLightItalic.ttf
+        - asset: fonts/Poppins-Italic.ttf
+        - asset: fonts/Poppins-Light.ttf
+        - asset: fonts/Poppins-LightItalic.ttf
+        - asset: fonts/Poppins-Medium.ttf
+        - asset: fonts/Poppins-MediumItalic.ttf
+        - asset: fonts/Poppins-Regular.ttf
+        - asset: fonts/Poppins-SemiBold.ttf
+        - asset: fonts/Poppins-SemiBoldItalic.ttf
+        - asset: fonts/Poppins-Thin.ttf
+        - asset: fonts/Poppins-ThinItalic.ttf

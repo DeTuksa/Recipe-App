@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:daisy_recipe/app/data/constants/app_colors.dart';
+import 'package:daisy_recipe/app/data/constants/app_theme.dart';
 import 'package:daisy_recipe/app/data/constants/spacers.dart';
 import 'package:daisy_recipe/app/modules/widgets/popular_card.dart';
 import 'package:daisy_recipe/app/modules/widgets/recent_card.dart';
@@ -80,7 +80,7 @@ class _HomeTabViewState extends State<HomeTabView> {
                       style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w700,
-                          color: AppColor.primaryRed
+                          color: AppTheme.primaryRed
                       ),
                     ),
                     AppSpacer.W5,
@@ -88,7 +88,7 @@ class _HomeTabViewState extends State<HomeTabView> {
                       Platform.isIOS ?
                       Icons.arrow_forward_ios :
                       Icons.arrow_forward,
-                      color: AppColor.primaryRed,
+                      color: AppTheme.primaryRed,
                     )
                   ],
                 )
@@ -146,7 +146,7 @@ class _HomeTabViewState extends State<HomeTabView> {
                       style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w700,
-                          color: AppColor.primaryRed
+                          color: AppTheme.primaryRed
                       ),
                     ),
                     AppSpacer.W5,
@@ -154,7 +154,7 @@ class _HomeTabViewState extends State<HomeTabView> {
                       Platform.isIOS ?
                       Icons.arrow_forward_ios :
                       Icons.arrow_forward,
-                      color: AppColor.primaryRed,
+                      color: AppTheme.primaryRed,
                     )
                   ],
                 )
