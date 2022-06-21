@@ -80,10 +80,12 @@ class LoginView extends GetView<AuthenticationController> {
                                 ),
                                 AppSpacer.H40,
                                 AppInputField(
-
+                                  labelText: 'Enter username',
                                 ),
                                 AppSpacer.H30,
-                                AppInputField(),
+                                AppInputField(
+                                  labelText: 'Enter password',
+                                ),
                                 AppSpacer.H10,
                                 const Text(
                                   'Forgot Password?',

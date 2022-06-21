@@ -15,22 +15,25 @@ class SplashScreenView extends GetView<SplashScreenController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          SizedBox(
-            width: Get.width,
-            height: Get.height,
-            child: Image.asset(
-              AssetPath.backgroundImage,
-              fit: BoxFit.fill,
-            ),
-          ),
-          Container(
-            width: Get.width,
-            height: Get.height,
-            color: const Color.fromRGBO(6, 9, 16, 0.6),
-          ),
-          Align(
+      body: GetBuilder<SplashScreenController>(
+        init: SplashScreenController(),
+        builder: (ctrl) {
+          return Stack(
+            children: [
+              SizedBox(
+                width: Get.width,
+                height: Get.height,
+                child: Image.asset(
+                  AssetPath.backgroundImage,
+                  fit: BoxFit.fill,
+                ),
+              ),
+              Container(
+                width: Get.width,
+                height: Get.height,
+                color: const Color.fromRGBO(6, 9, 16, 0.6),
+              ),
+              /*Align(
             alignment: Alignment.bottomCenter,
             child: Padding(
               padding: const EdgeInsets.only(bottom: 60),
@@ -84,8 +87,10 @@ class SplashScreenView extends GetView<SplashScreenController> {
                 ],
               ),
             ),
-          )
-        ],
+          )*/
+            ],
+          );
+        },
       )
     );
   }

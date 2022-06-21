@@ -9,6 +9,9 @@ dependencies:
   cupertino_icons: ^1.0.2
   get: 4.5.1
   flutter_svg: 0.22.0
+  dio: ^4.0.6
+  logger:
+  shared_preferences:
   flutter: 
     sdk: flutter
 
