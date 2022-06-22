@@ -30,7 +30,7 @@ class SplashScreenController extends GetxController {
     accessToken = await _cachedData.getAuthTokenResponse();
     String? token = accessToken?.token;
     if(token != null && token.isNotEmpty) {
-      Get.off(HomeView(), binding: HomeBinding());
+      Get.to(HomeView(), binding: HomeBinding());
     } else {
       Get.off(const WaitingScreenView());
     }

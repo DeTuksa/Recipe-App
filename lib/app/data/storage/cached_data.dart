@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:daisy_recipe/app/data/models/token_model.dart';
+import 'package:daisy_recipe/app/data/models/user_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class CachedData{
@@ -20,19 +21,19 @@ class CachedData{
     sharedPreferences.setString('CACHE_TOKEN', jsonEncode(accessTokenResponse.toJson()));
   }
 
-  // Future<void> cacheUserDetails({required User user}) async {
-  //   print("saving ${user.toJson()}");
-  //   final sharedPreferences = await SharedPreferences.getInstance();
-  //   sharedPreferences.setString(MTDStrings.USER_DETAILS, jsonEncode(user.toJson()));
-  // }
-  //
-  // Future<User?> getUserDetails() async {
-  //   final sharedPreferences = await SharedPreferences.getInstance();
-  //   String? userData = sharedPreferences.getString(MTDStrings.USER_DETAILS);
-  //   if (userData != null) {
-  //     return User.fromJson(jsonDecode(userData));
-  //   } else {
-  //     return null;
-  //   }
-  // }
+  Future<void> cacheUserDetails({required User user}) async {
+    print("saving ${user.toJson()}");
+    final sharedPreferences = await SharedPreferences.getInstance();
+    sharedPreferences.setString('USER_DETAILS', jsonEncode(user.toJson()));
+  }
+
+  Future<User?> getUserDetails() async {
+    final sharedPreferences = await SharedPreferences.getInstance();
+    String? userData = sharedPreferences.getString('USER_DETAILS');
+    if (userData != null) {
+      return User.fromJson(jsonDecode(userData));
+    } else {
+      return null;
+    }
+  }
 }

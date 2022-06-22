@@ -9,7 +9,7 @@ import 'app/routes/app_pages.dart';
 
 void main() {
   Get.lazyPut<HomeController>(()=> HomeController(), fenix: true);
-  Get.lazyPut<AuthenticationController>(()=> AuthenticationController(), fenix: true);
+  Get.put(AuthenticationController());
   runApp(
     GetMaterialApp(
       title: "Application",
