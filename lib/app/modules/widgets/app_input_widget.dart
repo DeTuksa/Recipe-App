@@ -2,7 +2,7 @@ import 'package:daisy_recipe/app/data/constants/spacers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class AppInputField extends StatelessWidget {
+class AppInputField extends StatefulWidget {
   final String? hintText;
   final String? Function(String?)? validator;
   final void Function(String?)? onSaved;
@@ -64,6 +64,11 @@ class AppInputField extends StatelessWidget {
         this.labelTextColor = Colors.black});
 
   @override
+  State<AppInputField> createState() => _AppInputFieldState();
+}
+
+class _AppInputFieldState extends State<AppInputField> {
+  @override
   Widget build(BuildContext context) {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       /*Text(
@@ -72,67 +77,67 @@ class AppInputField extends StatelessWidget {
       ),
       AppSpacer.H10,*/
       Padding(
-        padding: EdgeInsets.all(0),
+        padding: const EdgeInsets.all(0),
         child: TextFormField(
-            inputFormatters: inputFormatters,
-            controller: controller,
-            key: key,
-            enabled: enabled,
-            style: TextStyle(color: labelTextColor),
-            cursorColor: styleColor,
-            obscureText: obscureText,
-            maxLines: maxLines,
-            onChanged: onChanged,
+            inputFormatters: widget.inputFormatters,
+            controller: widget.controller,
+            key: widget.key,
+            enabled: widget.enabled,
+            style: TextStyle(color: widget.labelTextColor),
+            cursorColor: widget.styleColor,
+            obscureText: widget.obscureText,
+            maxLines: widget.maxLines,
+            onChanged: widget.onChanged,
             decoration: InputDecoration(
-              contentPadding: EdgeInsets.fromLTRB(25, 20, 20, 20),
-              prefixIcon: prefix,
-              fillColor: fillColor,
-              labelText: labelText,
+              contentPadding: const EdgeInsets.fromLTRB(25, 20, 20, 20),
+              prefixIcon: widget.prefix,
+              fillColor: widget.fillColor,
+              labelText: widget.labelText,
               filled: true,
-              hintStyle: TextStyle(color: Colors.black),
+              hintStyle: const TextStyle(color: Colors.black),
               isDense: true,
               errorBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
-                borderSide: BorderSide(color: Colors.red, width: 0.5),
+                borderSide: const BorderSide(color: Colors.red, width: 0.5),
               ),
               focusedErrorBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
-                borderSide: BorderSide(color: Colors.red, width: 0.5),
+                borderSide: const BorderSide(color: Colors.red, width: 0.5),
               ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
-                borderSide: BorderSide(color: enabledBorder, width: 0.5),
+                borderSide: BorderSide(color: widget.enabledBorder, width: 0.5),
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
-                borderSide: BorderSide(color: focusedBorder, width: 0.5),
+                borderSide: BorderSide(color: widget.focusedBorder, width: 0.5),
               ),
               disabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
-                borderSide: BorderSide(color: borderColor, width: 0.5),
+                borderSide: BorderSide(color: widget.borderColor, width: 0.5),
               ),
               // contentPadding: EdgeInsets.only(top: 10, bottom: 10),
-              suffixIcon: isPassword
+              suffixIcon: widget.isPassword
                   ? GestureDetector(
-                onTap: toggleEye,
+                onTap: widget.toggleEye,
                 child: Icon(
-                  showObscureText!
+                  widget.showObscureText!
                       ? Icons.visibility
                       : Icons.visibility_off,
-                  color: Color(0xFFC0C1C3),
+                  color: const Color(0xFFC0C1C3),
                 ),
               )
                   : Text(''),
-              errorText: isError ? showErrorText : null,
+              errorText: widget.isError ? widget.showErrorText : null,
             ),
-            validator: validator,
-            initialValue: init,
-            onSaved: onSaved,
-            keyboardType: keyboard == KeyboardType.EMAIL
+            validator: widget.validator,
+            initialValue: widget.init,
+            onSaved: widget.onSaved,
+            keyboardType: widget.keyboard == KeyboardType.EMAIL
                 ? TextInputType.emailAddress
-                : keyboard == KeyboardType.NUMBER
+                : widget.keyboard == KeyboardType.NUMBER
                 ? TextInputType.number
-                : keyboard == KeyboardType.PHONE
+                : widget.keyboard == KeyboardType.PHONE
                 ? TextInputType.phone
                 : TextInputType.text),
       ),
