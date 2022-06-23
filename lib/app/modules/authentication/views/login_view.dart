@@ -92,7 +92,7 @@ class LoginView extends GetView<AuthenticationController> {
                                         labelText: 'Enter password',
                                         validator: (value) => (value!.isEmpty? "Please enter password" : null),
                                         controller: ctrl.passwordCtrl,
-                                        isPassword: true,
+                                        // isPassword: true,
                                         obscureText: ctrl.toggleLoginEye,
                                         showObscureText: ctrl.toggleLoginEye,
                                       ),
