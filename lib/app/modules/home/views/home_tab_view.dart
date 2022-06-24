@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:daisy_recipe/app/data/constants/app_theme.dart';
 import 'package:daisy_recipe/app/data/constants/spacers.dart';
+import 'package:daisy_recipe/app/modules/home/controllers/home_controller.dart';
 import 'package:daisy_recipe/app/modules/widgets/popular_card.dart';
 import 'package:daisy_recipe/app/modules/widgets/recent_card.dart';
 import 'package:daisy_recipe/app/modules/widgets/trending_card.dart';
@@ -17,6 +18,8 @@ class HomeTabView extends StatefulWidget {
 }
 
 class _HomeTabViewState extends State<HomeTabView> {
+
+  final homeController = Get.find<HomeController>();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -133,7 +136,7 @@ class _HomeTabViewState extends State<HomeTabView> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const Text(
-                  'Rcent recipe',
+                  'Cocktails',
                   style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.w700
@@ -161,18 +164,27 @@ class _HomeTabViewState extends State<HomeTabView> {
               ],
             ),
             AppSpacer.H16,
-            SizedBox(
+            Obx(() => SizedBox(
               width: Get.width - 40,
               height: 190,
-              child: ListView.builder(
+              child: homeController.loadingCocktails.value ?
+                  const Center(
+                    child: CircularProgressIndicator(),
+                  ) : homeController.cocktailList.isEmpty ? const Center(
+                child: Text(
+                  'No data found'
+                ),
+              ) : ListView.builder(
                 scrollDirection: Axis.horizontal,
                 physics: const BouncingScrollPhysics(),
-                itemCount: 3,
+                itemCount: 5,
                 itemBuilder: (context, index) {
-                  return const RecentCard();
+                  return RecentCard(
+                    drink: homeController.cocktailList[index],
+                  );
                 },
               ),
-            ),
+            )),
           ],
         ),
       ),

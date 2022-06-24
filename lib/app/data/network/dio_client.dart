@@ -18,6 +18,8 @@ Dio client() {
         // Do something before request is sent
         options.headers["Accept"] = "application/json";
         options.headers["Content-Type"] = "application/json";
+        options.headers["Content-Type"] = "application/json";
+        options.headers["Content-Type"] = "application/json";
 
         AccessTokenResponse? accessTokenResponse = await _cachedData.getAuthTokenResponse();
         String? _token = accessTokenResponse?.token;

@@ -1,9 +1,10 @@
-import 'package:daisy_recipe/app/data/constants/asset_paths.dart';
 import 'package:daisy_recipe/app/data/constants/spacers.dart';
+import 'package:daisy_recipe/app/data/models/cocktail_model.dart';
 import 'package:flutter/material.dart';
 
 class RecentCard extends StatefulWidget {
-  const RecentCard({Key? key}) : super(key: key);
+  final Drink drink;
+  const RecentCard({Key? key, required this.drink}) : super(key: key);
 
   @override
   State<RecentCard> createState() => _RecentCardState();
@@ -18,6 +19,7 @@ class _RecentCardState extends State<RecentCard> {
           width: 125,
           height: 190,
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
                 decoration: BoxDecoration(
@@ -26,16 +28,17 @@ class _RecentCardState extends State<RecentCard> {
                 width: 125, height: 125,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(12),
-                  child: Image.asset(
-                    AssetPath.recentDummy,
+                  child: Image.network(
+                    widget.drink.strDrinkThumb!,
                     fit: BoxFit.fill,
                   ),
                 ),
               ),
               AppSpacer.H10,
-              const Text(
-                'Indonesian chicken burger',
-                style: TextStyle(
+              Text(
+                widget.drink.strDrink,
+                textAlign: TextAlign.center,
+                style: const TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w600
                 ),
