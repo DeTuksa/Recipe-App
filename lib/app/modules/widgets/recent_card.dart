@@ -15,6 +15,7 @@ class _RecentCardState extends State<RecentCard> {
   Widget build(BuildContext context) {
     return Row(
       children: [
+        AppSpacer.W10,
         SizedBox(
           width: 125,
           height: 190,
@@ -46,7 +47,7 @@ class _RecentCardState extends State<RecentCard> {
             ],
           ),
         ),
-        AppSpacer.W16
+        AppSpacer.W10
       ],
     );
   }

@@ -15,6 +15,7 @@ class _PopularCardState extends State<PopularCard> {
   Widget build(BuildContext context) {
     return Row(
       children: [
+        AppSpacer.W10,
         Container(
           height: 250,
           width: 150,
@@ -116,7 +117,7 @@ class _PopularCardState extends State<PopularCard> {
             ],
           ),
         ),
-        AppSpacer.W16
+        AppSpacer.W10
       ],
     );
   }

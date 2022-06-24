@@ -15,6 +15,7 @@ class _TrendingCardState extends State<TrendingCard> {
   Widget build(BuildContext context) {
     return Row(
       children: [
+        AppSpacer.W10,
         Column(
           children: [
             Container(
@@ -114,7 +115,7 @@ class _TrendingCardState extends State<TrendingCard> {
             )
           ],
         ),
-        AppSpacer.W16
+        AppSpacer.W10
       ],
     );
   }
