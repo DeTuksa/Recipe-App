@@ -16,7 +16,7 @@ class Cocktail {
 }
 
 class Drink {
-  String idDrink;
+  String? idDrink;
   String strDrink;
   String? strDrinkAlternate;
   String? strTags;
@@ -62,7 +62,7 @@ class Drink {
   String? dateModified;
 
   Drink({
-    required this.idDrink,
+    this.idDrink,
     required this.strDrink,
     this.dateModified,
     this.strCategory,

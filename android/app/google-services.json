@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "135234272863",
+    "project_id": "daisy-recipe",
+    "storage_bucket": "daisy-recipe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:135234272863:android:87f28b12b821fed0eae5ea",
+        "android_client_info": {
+          "package_name": "com.asas.daisy_recipe"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "135234272863-q3em7uiit01qrbp96rd4pdil5u7cv4hf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWeO8gzFYv2P6WWTCkbAHemRbUMWdoHvA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "135234272863-q3em7uiit01qrbp96rd4pdil5u7cv4hf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

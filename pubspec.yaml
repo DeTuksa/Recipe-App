@@ -12,6 +12,10 @@ dependencies:
   dio: ^4.0.6
   logger:
   shared_preferences:
+  firebase_messaging: ^11.2.6
+  overlay_support: ^1.2.1
+  flutter_local_notifications: ^9.2.0
+  firebase_core: ^1.12.0
   flutter: 
     sdk: flutter
 
@@ -19,6 +23,19 @@ dev_dependencies:
   flutter_lints: ^1.0.0
   flutter_test: 
     sdk: flutter
+
+dependency_overrides:
+  firebase_messaging_platform_interface: 3.1.6
+  firebase_crashlytics_platform_interface: 3.1.13
+  cloud_firestore_platform_interface: 5.4.13
+  firebase_auth_platform_interface: 6.1.11
+  firebase_storage_platform_interface: 4.0.14
+  cloud_functions_platform_interface: 5.0.21
+  firebase_analytics_platform_interface: 3.0.5
+  firebase_remote_config_platform_interface: 1.0.5
+  firebase_dynamic_links_platform_interface: 0.2.0+5
+  firebase_performance_platform_interface: 0.1.0+5
+  firebase_app_installations_platform_interface: 0.1.0+6
 
 flutter: 
   uses-material-design: true

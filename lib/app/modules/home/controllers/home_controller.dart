@@ -7,6 +7,7 @@ import 'package:daisy_recipe/app/modules/home/views/saved_tab_view.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:daisy_recipe/app/notification_controller.dart';
 
 class HomeController extends GetxController {
   //TODO: Implement HomeController
@@ -25,6 +26,7 @@ class HomeController extends GetxController {
   var loadingCocktails = false.obs;
   @override
   void onInit() {
+    Get.put(NotificationController());
     fetchRandomCocktails();
     super.onInit();
   }

@@ -181,7 +181,7 @@ class _HomeTabViewState extends State<HomeTabView> {
             AppSpacer.H16,
             Obx(() => SizedBox(
               width: Get.width,
-              height: 190,
+              height: 220,
               child: homeController.loadingCocktails.value ?
                   const Center(
                     child: CircularProgressIndicator(),

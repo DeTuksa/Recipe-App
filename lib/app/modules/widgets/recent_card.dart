@@ -18,7 +18,7 @@ class _RecentCardState extends State<RecentCard> {
         AppSpacer.W10,
         SizedBox(
           width: 125,
-          height: 190,
+          height: 220,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
