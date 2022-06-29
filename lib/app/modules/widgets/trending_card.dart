@@ -1,10 +1,14 @@
 import 'package:daisy_recipe/app/data/constants/asset_paths.dart';
 import 'package:daisy_recipe/app/data/constants/spacers.dart';
+import 'package:daisy_recipe/app/data/models/recipe_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 
 class TrendingCard extends StatefulWidget {
-  const TrendingCard({Key? key}) : super(key: key);
+
+  final Recipe recipe;
+  const TrendingCard({Key? key, required this.recipe}) : super(key: key);
 
   @override
   State<TrendingCard> createState() => _TrendingCardState();
@@ -19,7 +23,7 @@ class _TrendingCardState extends State<TrendingCard> {
         Column(
           children: [
             Container(
-              height: 180, width: 280,
+              height: 165, width: 280,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
               ),
@@ -27,14 +31,15 @@ class _TrendingCardState extends State<TrendingCard> {
                 children: [
                   SizedBox(
                     width: 280, height: 180,
-                    child: ClipRect(
-                      child: Image.asset(
-                        AssetPath.trendingDummy,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: Image.network(
+                        widget.recipe.image!,
                         fit: BoxFit.fill,
                       ),
                     ),
                   ),
-                  Align(
+                  /*Align(
                     alignment: Alignment.topRight,
                     child: Padding(
                       padding: const EdgeInsets.all(8),
@@ -53,34 +58,43 @@ class _TrendingCardState extends State<TrendingCard> {
                         ),
                       ),
                     ),
-                  ),
-                  /*Align(
+                  ),*/
+                  Align(
                     alignment: Alignment.topLeft,
                     child: Padding(
                       padding: const EdgeInsets.all(8),
                       child: Container(
-                        width: 60, height: 30,
+                        width: 120, height: 30,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(12),
                           color: const Color(0xFF303030).withOpacity(0.3)
                         ),
+                        child: Center(
+                          child: Text(
+                            'Health Score: ${widget.recipe.healthScore!}',
+                            style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 12
+                            ),
+                          ),
+                        ),
                       ),
                     ),
-                  ),*/
+                  ),
                   Align(
                     alignment: Alignment.bottomRight,
                     child: Padding(
                       padding: const EdgeInsets.all(8),
                       child: Container(
-                        width: 42, height: 26,
+                        width: 60, height: 26,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(8),
                             color: const Color(0xFF303030).withOpacity(0.3)
                         ),
-                        child: const Center(
+                        child: Center(
                           child: Text(
-                            '15:10',
-                            style: TextStyle(
+                            '${widget.recipe.readyInMinutes} mins',
+                            style: const TextStyle(
                               color: Colors.white,
                               fontSize: 12
                             ),
@@ -99,15 +113,18 @@ class _TrendingCardState extends State<TrendingCard> {
                 mainAxisSize: MainAxisSize.max,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
-                  Text(
-                    'How to make sushi at home',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600
+                children: [
+                  Container(
+                    width: Get.width * 0.5,
+                    child: Text(
+                      widget.recipe.title!,
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600
+                      ),
                     ),
                   ),
-                  Icon(
+                  const Icon(
                     Icons.more_horiz
                   )
                 ],

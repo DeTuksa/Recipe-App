@@ -1,10 +1,13 @@
+import 'package:daisy_recipe/app/data/constants/app_theme.dart';
 import 'package:daisy_recipe/app/data/constants/asset_paths.dart';
 import 'package:daisy_recipe/app/data/constants/spacers.dart';
+import 'package:daisy_recipe/app/data/models/recipe_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class PopularCard extends StatefulWidget {
-  const PopularCard({Key? key}) : super(key: key);
+  final Recipe recipe;
+  const PopularCard({Key? key, required this.recipe}) : super(key: key);
 
   @override
   State<PopularCard> createState() => _PopularCardState();
@@ -31,15 +34,15 @@ class _PopularCardState extends State<PopularCard> {
                   ),
                   child: Stack(
                     children: [
-                      const Center(
+                      Center(
                         child: Padding(
-                          padding: EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.all(8.0),
                           child: Text(
-                            'Pepper sweetcorn ramen',
+                            widget.recipe.title!,
                             textAlign: TextAlign.center,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontWeight: FontWeight.w600,
-                              fontSize: 16
+                              fontSize: 14
                             ),
                           ),
                         ),
@@ -75,8 +78,8 @@ class _PopularCardState extends State<PopularCard> {
                             child: Column(
                               mainAxisSize: MainAxisSize.min,
                               crossAxisAlignment: CrossAxisAlignment.center,
-                              children: const [
-                                Text(
+                              children: [
+                                const Text(
                                   'Time',
                                   style: TextStyle(
                                     color: Color(0xFFC1C1C1)
@@ -84,8 +87,8 @@ class _PopularCardState extends State<PopularCard> {
                                 ),
                                 AppSpacer.H5,
                                 Text(
-                                  '20 mins',
-                                  style: TextStyle(
+                                  '${widget.recipe.readyInMinutes} mins',
+                                  style: const TextStyle(
                                     fontWeight: FontWeight.w600
                                   ),
                                 )
@@ -103,12 +106,13 @@ class _PopularCardState extends State<PopularCard> {
                 child: Container(
                   width: 110, height: 110,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(80)
+                    borderRadius: BorderRadius.circular(80),
+                    border: Border.all(color: const Color(0xFFF1F1F1), width: 4)
                   ),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(80),
-                    child: Image.asset(
-                      AssetPath.popularDummy,
+                    child: Image.network(
+                      widget.recipe.image!,
                       fit: BoxFit.fill,
                     ),
                   ),

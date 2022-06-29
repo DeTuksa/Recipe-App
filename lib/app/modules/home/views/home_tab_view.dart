@@ -107,18 +107,27 @@ class _HomeTabViewState extends State<HomeTabView> {
               ),
             ),
             AppSpacer.H16,
-            SizedBox(
+            Obx(() => SizedBox(
               width: Get.width,
               height: 250,
-              child: ListView.builder(
+              child: homeController.loadingRecipes.value ?
+              const Center(
+                child: CircularProgressIndicator(),
+              ) : homeController.recipeList.isEmpty ? const Center(
+                child: Text(
+                    'No data found'
+                ),
+              ) : ListView.builder(
                 scrollDirection: Axis.horizontal,
                 physics: const BouncingScrollPhysics(),
-                itemCount: 3,
+                itemCount: 5,
                 itemBuilder: (context, index) {
-                  return const TrendingCard();
+                  return TrendingCard(
+                    recipe: homeController.recipeList[index],
+                  );
                 },
               ),
-            ),
+            )),
             const Padding(
               padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
               child: Text(
@@ -130,18 +139,27 @@ class _HomeTabViewState extends State<HomeTabView> {
               ),
             ),
             AppSpacer.H16,
-            SizedBox(
+            Obx(() => SizedBox(
               width: Get.width,
               height: 250,
-              child: ListView.builder(
+              child: homeController.loadingRecipes.value ?
+              const Center(
+                child: CircularProgressIndicator(),
+              ) : homeController.recipeList.isEmpty ? const Center(
+                child: Text(
+                    'No data found'
+                ),
+              ) : ListView.builder(
                 scrollDirection: Axis.horizontal,
                 physics: const BouncingScrollPhysics(),
-                itemCount: 3,
+                itemCount: 5,
                 itemBuilder: (context, index) {
-                  return const PopularCard();
+                  return PopularCard(
+                    recipe: homeController.recipeList.reversed.toList()[index],
+                  );
                 },
               ),
-            ),
+            )),
             Padding(
               padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
               child: Row(
