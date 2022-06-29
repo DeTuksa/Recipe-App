@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:daisy_recipe/app/data/constants/app_theme.dart';
 import 'package:daisy_recipe/app/data/constants/spacers.dart';
 import 'package:daisy_recipe/app/modules/home/controllers/home_controller.dart';
+import 'package:daisy_recipe/app/modules/home/views/all_recipes_view.dart';
 import 'package:daisy_recipe/app/modules/widgets/popular_card.dart';
 import 'package:daisy_recipe/app/modules/widgets/recent_card.dart';
 import 'package:daisy_recipe/app/modules/widgets/trending_card.dart';
@@ -84,24 +85,27 @@ class _HomeTabViewState extends State<HomeTabView> {
                         fontWeight: FontWeight.w700
                     ),
                   ),
-                  Row(
-                    children: [
-                      const Text(
-                        'See all',
-                        style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w700,
-                            color: AppTheme.primaryRed
+                  GestureDetector(
+                    onTap: () => Get.to(const AllRecipesView()),
+                    child: Row(
+                      children: [
+                        const Text(
+                          'See all',
+                          style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w700,
+                              color: AppTheme.primaryRed
+                          ),
                         ),
-                      ),
-                      AppSpacer.W5,
-                      Icon(
-                        Platform.isIOS ?
-                        Icons.arrow_forward_ios :
-                        Icons.arrow_forward,
-                        color: AppTheme.primaryRed,
-                      )
-                    ],
+                        AppSpacer.W5,
+                        Icon(
+                          Platform.isIOS ?
+                          Icons.arrow_forward_ios :
+                          Icons.arrow_forward,
+                          color: AppTheme.primaryRed,
+                        )
+                      ],
+                    ),
                   )
                 ],
               ),

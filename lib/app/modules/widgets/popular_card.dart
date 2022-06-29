@@ -111,9 +111,11 @@ class _PopularCardState extends State<PopularCard> {
                   ),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(80),
-                    child: Image.network(
+                    child: widget.recipe.image != null ? Image.network(
                       widget.recipe.image!,
                       fit: BoxFit.fill,
+                    ) : Container(
+                      color: Colors.white,
                     ),
                   ),
                 ),
