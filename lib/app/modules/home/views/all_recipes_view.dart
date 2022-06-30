@@ -1,4 +1,5 @@
 import 'package:daisy_recipe/app/data/constants/spacers.dart';
+import 'package:daisy_recipe/app/data/models/recipe_model.dart';
 import 'package:daisy_recipe/app/modules/home/controllers/home_controller.dart';
 import 'package:daisy_recipe/app/modules/widgets/all_recipes_widget.dart';
 import 'package:daisy_recipe/app/modules/widgets/trending_card.dart';
@@ -19,10 +20,37 @@ class _AllRecipesViewState extends State<AllRecipesView> {
   final RefreshController _refreshController = RefreshController(initialRefresh: true);
   final homeController = Get.find<HomeController>();
 
+  List<Recipe> allRecipes = [];
+
   void _onRefresh() async{
+    allRecipes.clear();
+    allRecipes = homeController.recipeList;
+    _refreshController.resetNoData();
+    await homeController.moreRandomRecipes().then((value) {
+      for (var element in value) {
+        allRecipes.add(element);
+      }
+      if(mounted) setState(() {});
+      _refreshController.refreshCompleted();
+    }).onError((error, stackTrace) {
+      _refreshController.refreshFailed();
+    });
   }
 
   void _onLoading() async{
+    await homeController.moreRandomRecipes().then((value) {
+      if (value.isEmpty) {
+        _refreshController.loadNoData();
+      } else {
+        for (var element in value) {
+          allRecipes.add(element);
+        }
+        if(mounted) setState(() {});
+        _refreshController.loadComplete();
+      }
+    }).onError((error, stackTrace) {
+      _refreshController.loadFailed();
+    });
   }
 
   @override
@@ -34,7 +62,7 @@ class _AllRecipesViewState extends State<AllRecipesView> {
         elevation: 0,
         leading: InkWell(
           onTap: ()=> Get.back(),
-          child: Icon(Icons.arrow_back, color: Colors.black,),),
+          child: const Icon(Icons.arrow_back, color: Colors.black,),),
       ),
       body: SmartRefresher(
         physics: const BouncingScrollPhysics(),
@@ -78,9 +106,9 @@ class _AllRecipesViewState extends State<AllRecipesView> {
                 child: Text('Recipes', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),),
               ),
               AppSpacer.H20,
-              ...List.generate(homeController.recipeList.length, (index) =>
+              ...List.generate(allRecipes.length, (index) =>
                 AllRecipesWidget(
-                  recipe: homeController.recipeList[index],
+                  recipe: allRecipes[index],
                 )
               )
             ],

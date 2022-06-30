@@ -64,6 +64,22 @@ class HomeController extends GetxController {
     }
   }
 
+  Future<List<Drink>> getMoreCocktails() async {
+    // loadingCocktails.value = true;
+    List<Drink> drinks = [];
+
+    try {
+      final response = await CocktailService().getRandomCocktails();
+      drinks = Cocktail.fromJson(response.data).drinks;
+      // cocktailList.value = cocktail!.drinks;
+      update();
+      // loadingCocktails.value = false;
+    } on DioError catch (e) {
+      // loadingCocktails.value = false;
+    }
+    return drinks;
+  }
+
   fetchRandomRecipes() async {
     loadingRecipes.value = true;
     try {
@@ -75,5 +91,19 @@ class HomeController extends GetxController {
     } on DioError catch (e) {
       loadingRecipes.value = false;
     }
+  }
+
+  Future<List<Recipe>> moreRandomRecipes() async {
+    // loadingRecipes.value = true;
+    List<Recipe> recipes = [];
+    try {
+      final response = await RecipeService().getRandomRecipes();
+      recipes = RecipeResponse.fromJson(response.data).recipes;
+      update();
+      // loadingRecipes.value = false;
+    } on DioError catch (e) {
+      // loadingRecipes.value = false;
+    }
+    return recipes;
   }
 }
