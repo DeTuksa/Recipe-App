@@ -191,11 +191,11 @@ class AnalyzedInstruction {
   });
 
   String? name;
-  List<Step>? steps;
+  List<Steps>? steps;
 
   factory AnalyzedInstruction.fromJson(Map<String, dynamic> json) => AnalyzedInstruction(
     name: json["name"],
-    steps: List<Step>.from(json["steps"].map((x) => Step.fromJson(x))),
+    steps: List<Steps>.from(json["steps"].map((x) => Steps.fromJson(x))),
   );
 
   Map<String, dynamic> toJson() => {
@@ -204,8 +204,8 @@ class AnalyzedInstruction {
   };
 }
 
-class Step {
-  Step({
+class Steps {
+  Steps({
     this.number,
     this.step,
     this.ingredients,
@@ -217,7 +217,7 @@ class Step {
   List<Ent>? ingredients;
   List<Ent>? equipment;
 
-  factory Step.fromJson(Map<String, dynamic> json) => Step(
+  factory Steps.fromJson(Map<String, dynamic> json) => Steps(
     number: json["number"],
     step: json["step"],
     ingredients: List<Ent>.from(json["ingredients"].map((x) => Ent.fromJson(x))),

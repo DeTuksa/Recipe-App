@@ -41,7 +41,7 @@ class _HomeTabViewState extends State<HomeTabView> {
                 ),
               ),
             ),
-            AppSpacer.H20,
+            /*AppSpacer.H20,
             Padding(
               padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
               child: SizedBox(
@@ -69,7 +69,7 @@ class _HomeTabViewState extends State<HomeTabView> {
                   ),
                 ),
               ),
-            ),
+            ),*/
             AppSpacer.H30,
             Padding(
               padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
