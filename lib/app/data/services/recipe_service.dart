@@ -16,4 +16,12 @@ class RecipeService {
     final response = await apiClient.get('/recipes/search-recipe', queryParameters: queryString);
     return response;
   }
+
+  Future<Response> searchRecipeById({required int id}) async {
+    var queryString = {
+      "recipe_id": id
+    };
+    final response = await apiClient.get('/recipes/get-recipe-by-id', queryParameters: queryString);
+    return response;
+  }
 }

@@ -4,6 +4,8 @@
 
 import 'dart:convert';
 
+import 'package:daisy_recipe/app/data/models/recipe_model.dart';
+
 SearchResponse searchResponseFromJson(String str) => SearchResponse.fromJson(json.decode(str));
 
 String searchResponseToJson(SearchResponse data) => json.encode(data.toJson());
@@ -73,4 +75,23 @@ class EnumValues<T> {
     reverseMap ??= map.map((k, v) => MapEntry(v, k));
     return reverseMap!;
   }
+}
+
+class SearchByIdResponse {
+  String message;
+  Recipe recipe;
+
+  SearchByIdResponse({required this.message, required this.recipe});
+
+  factory SearchByIdResponse.fromJson(Map<String, dynamic> json) {
+    return SearchByIdResponse(
+      message: json['message'],
+      recipe: Recipe.fromJson(json['recipe'])
+    );
+  }
+
+  Map<String, dynamic> toJson() => {
+    "message": message,
+    "recipe": recipe.toJson(),
+  };
 }

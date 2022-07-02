@@ -34,6 +34,8 @@ class HomeController extends GetxController {
 
   List<SearchItem> searchResults = [];
   var searchLoading = false.obs;
+  var searchDetailsLoading = false.obs;
+  SearchByIdResponse? searchById;
 
   @override
   void onInit() {
@@ -57,12 +59,6 @@ class HomeController extends GetxController {
     update();
   }
 
-  addSearchQuery(String query) {
-    searchQuery = query;
-    print(searchQuery);
-    // update();
-  }
-
   fetchRandomCocktails() async {
     loadingCocktails.value = true;
     try {
@@ -77,15 +73,12 @@ class HomeController extends GetxController {
   }
 
   Future<List<Drink>> getMoreCocktails() async {
-    // loadingCocktails.value = true;
     List<Drink> drinks = [];
 
     try {
       final response = await CocktailService().getRandomCocktails();
       drinks = Cocktail.fromJson(response.data).drinks;
-      // cocktailList.value = cocktail!.drinks;
       update();
-      // loadingCocktails.value = false;
     } on DioError catch (e) {
       // loadingCocktails.value = false;
     }
@@ -106,13 +99,11 @@ class HomeController extends GetxController {
   }
 
   Future<List<Recipe>> moreRandomRecipes() async {
-    // loadingRecipes.value = true;
     List<Recipe> recipes = [];
     try {
       final response = await RecipeService().getRandomRecipes();
       recipes = RecipeResponse.fromJson(response.data).recipes;
       update();
-      // loadingRecipes.value = false;
     } on DioError catch (e) {
       // loadingRecipes.value = false;
     }
@@ -130,5 +121,19 @@ class HomeController extends GetxController {
     } on DioError catch (e) {
       searchLoading.value = false;
     }
+  }
+
+  Future<Recipe> searchRecipeById({required int id}) async {
+    searchDetailsLoading.value = true;
+    Recipe? recipe;
+    try {
+      final response = await RecipeService().searchRecipeById(id: id);
+      recipe = SearchByIdResponse.fromJson(response.data).recipe;
+      update();
+      searchDetailsLoading.value = false;
+    } on DioError catch (e) {
+      searchDetailsLoading.value = false;
+    }
+    return recipe!;
   }
 }

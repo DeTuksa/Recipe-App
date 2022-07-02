@@ -1,7 +1,6 @@
 import 'package:daisy_recipe/app/data/constants/spacers.dart';
-import 'package:daisy_recipe/app/data/models/recipe_model.dart';
 import 'package:daisy_recipe/app/data/models/recipe_search_model.dart';
-import 'package:daisy_recipe/app/modules/home/views/recipe_details_view.dart';
+import 'package:daisy_recipe/app/modules/home/views/search_details_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -19,7 +18,7 @@ class _SearchWidgetState extends State<SearchWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      // onTap: () => Get.to(RecipeDetailsView(recipe: widget.reRecipecipe)),
+      onTap: () => Get.to(SearchDetailsView(id: widget.recipe.id)),
       child: Center(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -46,14 +45,14 @@ class _SearchWidgetState extends State<SearchWidget> {
                 ),
               ),
               AppSpacer.H5,
-              Container(
+              SizedBox(
                 width: Get.width,
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Container(
+                    SizedBox(
                       width: Get.width * 0.6,
                       child: Text(
                         widget.recipe.title,
