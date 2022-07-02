@@ -1,5 +1,6 @@
 import 'package:daisy_recipe/app/data/models/cocktail_model.dart';
 import 'package:daisy_recipe/app/data/models/recipe_model.dart';
+import 'package:daisy_recipe/app/data/models/recipe_search_model.dart';
 import 'package:daisy_recipe/app/data/services/cocktail_service.dart';
 import 'package:daisy_recipe/app/data/services/recipe_service.dart';
 import 'package:daisy_recipe/app/modules/home/views/home_tab_view.dart';
@@ -17,18 +18,23 @@ class HomeController extends GetxController {
   var recipeList = <Recipe>[].obs;
   RecipeResponse? recipeResponse;
   Cocktail? cocktail;
+  String searchQuery = '';
 
   final count = 0.obs;
   List<Widget> body = <Widget>[
     const HomeTabView(),
-    const SavedTabView(),
-    const NotificationTabView(),
+    /*const SavedTabView(),
+    const NotificationTabView(),*/
     const ProfileTabView()
   ];
   var bodyIndex = 0.obs;
 
   var loadingCocktails = false.obs;
   var loadingRecipes = false.obs;
+
+  List<SearchItem> searchResults = [];
+  var searchLoading = false.obs;
+
   @override
   void onInit() {
     Get.put(NotificationController());
@@ -49,6 +55,12 @@ class HomeController extends GetxController {
   changeBodyIndex(int newIndex) {
     bodyIndex.value = newIndex;
     update();
+  }
+
+  addSearchQuery(String query) {
+    searchQuery = query;
+    print(searchQuery);
+    // update();
   }
 
   fetchRandomCocktails() async {
@@ -105,5 +117,18 @@ class HomeController extends GetxController {
       // loadingRecipes.value = false;
     }
     return recipes;
+  }
+
+  searchRecipe({required String query}) async {
+    searchLoading.value = true;
+    // List<Recipe> recipes = [];
+    try {
+      final response = await RecipeService().searchRecipe(query: query);
+      searchResults = SearchResponse.fromJson(response.data).searchItems;
+      update();
+      searchLoading.value = false;
+    } on DioError catch (e) {
+      searchLoading.value = false;
+    }
   }
 }

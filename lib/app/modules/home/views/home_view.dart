@@ -56,7 +56,7 @@ class HomeView extends GetView<HomeController> {
                   asset: homeCtrl.bodyIndex.value == 0 ? AssetPath.homeActive : AssetPath.homeInactive,
                   function: () => homeCtrl.changeBodyIndex(0),
                 )),
-                Obx(() => CustomBottomItem(
+                /*Obx(() => CustomBottomItem(
                   asset: homeCtrl.bodyIndex.value == 1 ? AssetPath.bookmarkActive : AssetPath.bookmarkInactive,
                   function: () => homeCtrl.changeBodyIndex(1),
                 )),
@@ -64,16 +64,16 @@ class HomeView extends GetView<HomeController> {
                 Obx(() => CustomBottomItem(
                   asset: homeCtrl.bodyIndex.value == 2 ? AssetPath.notificationActive : AssetPath.notificationInactive,
                   function: () => homeCtrl.changeBodyIndex(2),
-                )),
+                )),*/
                 Obx(() => CustomBottomItem(
-                  asset: homeCtrl.bodyIndex.value == 3 ? AssetPath.profileActive : AssetPath.profileInactive,
-                  function: () => homeCtrl.changeBodyIndex(3),
+                  asset: homeCtrl.bodyIndex.value == 1 ? AssetPath.profileActive : AssetPath.profileInactive,
+                  function: () => homeCtrl.changeBodyIndex(1),
                 ))
               ],
             ),
           ),
         ),
-        floatingActionButton: FloatingActionButton(
+        /*floatingActionButton: FloatingActionButton(
           onPressed: () {},
           backgroundColor: AppTheme.primaryRed,
           child: const Center(
@@ -83,7 +83,7 @@ class HomeView extends GetView<HomeController> {
             ),
           ),
         ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,*/
       ),
     );
   }

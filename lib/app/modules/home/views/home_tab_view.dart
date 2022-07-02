@@ -2,8 +2,10 @@ import 'dart:io';
 
 import 'package:daisy_recipe/app/data/constants/app_theme.dart';
 import 'package:daisy_recipe/app/data/constants/spacers.dart';
+import 'package:daisy_recipe/app/data/models/recipe_search_model.dart';
 import 'package:daisy_recipe/app/modules/home/controllers/home_controller.dart';
 import 'package:daisy_recipe/app/modules/home/views/all_recipes_view.dart';
+import 'package:daisy_recipe/app/modules/home/views/search_view.dart';
 import 'package:daisy_recipe/app/modules/widgets/popular_card.dart';
 import 'package:daisy_recipe/app/modules/widgets/recent_card.dart';
 import 'package:daisy_recipe/app/modules/widgets/trending_card.dart';
@@ -41,35 +43,41 @@ class _HomeTabViewState extends State<HomeTabView> {
                 ),
               ),
             ),
-            /*AppSpacer.H20,
+            AppSpacer.H20,
             Padding(
               padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-              child: SizedBox(
-                child: TextField(
-                  decoration: InputDecoration(
-                      hintText: 'Search recipes',
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
-                        borderSide: const BorderSide(color: Colors.grey, width: 0.5),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
-                        borderSide: const BorderSide(color: Colors.grey, width: 0.5),
-                      ),
-                      disabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
-                        borderSide: const BorderSide(color: Colors.grey, width: 0.5),
-                      ),
-                      prefixIcon: Icon(
-                        Platform.isIOS ? CupertinoIcons.search : Icons.search,
-                        size: 30,
-                        color: Colors.grey,
-                      ),
-                      enabled: false
+              child: GestureDetector(
+                onTap: () => showSearch(
+                    context: Get.context!,
+                    delegate: CustomSearchDelegate()
+                ),
+                child: SizedBox(
+                  child: TextField(
+                    decoration: InputDecoration(
+                        hintText: 'Search recipes',
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                          borderSide: const BorderSide(color: Colors.grey, width: 0.5),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                          borderSide: const BorderSide(color: Colors.grey, width: 0.5),
+                        ),
+                        disabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                          borderSide: const BorderSide(color: Colors.grey, width: 0.5),
+                        ),
+                        prefixIcon: Icon(
+                          Platform.isIOS ? CupertinoIcons.search : Icons.search,
+                          size: 30,
+                          color: Colors.grey,
+                        ),
+                        enabled: false
+                    ),
                   ),
                 ),
               ),
-            ),*/
+            ),
             AppSpacer.H30,
             Padding(
               padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),

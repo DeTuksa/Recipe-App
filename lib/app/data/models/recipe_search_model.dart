@@ -19,12 +19,12 @@ class SearchResponse {
 
   factory SearchResponse.fromJson(Map<String, dynamic> json) => SearchResponse(
     message: json["message"],
-    searchItems: List<SearchItem>.from(json["searchItems"].map((x) => SearchItem.fromJson(x))),
+    searchItems: List<SearchItem>.from(json["recipes"].map((x) => SearchItem.fromJson(x))),
   );
 
   Map<String, dynamic> toJson() => {
     "message": message,
-    "searchItems": List<dynamic>.from(searchItems.map((x) => x.toJson())),
+    "recipes": List<dynamic>.from(searchItems.map((x) => x.toJson())),
   };
 }
 

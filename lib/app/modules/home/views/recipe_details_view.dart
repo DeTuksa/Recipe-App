@@ -2,7 +2,6 @@ import 'package:daisy_recipe/app/data/constants/app_theme.dart';
 import 'package:daisy_recipe/app/data/constants/spacers.dart';
 import 'package:daisy_recipe/app/data/models/recipe_model.dart';
 import 'package:daisy_recipe/app/modules/widgets/ingredient_widget.dart';
-import 'package:daisy_recipe/app/modules/widgets/instruction_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_html/flutter_html.dart';
@@ -79,7 +78,7 @@ class _RecipeDetailsViewState extends State<RecipeDetailsView> {
                 maxChildSize: 0.8,
                 builder: (BuildContext context, myScrollController) {
                   return Material(
-                    elevation: 4,
+                    elevation: 12,
                     borderRadius: BorderRadius.circular(10),
                     child: Container(
                       decoration: BoxDecoration(
@@ -93,15 +92,14 @@ class _RecipeDetailsViewState extends State<RecipeDetailsView> {
                           children: [
                             AppSpacer.H16,
                             TabBar(
-                              indicatorColor: Colors.white,
-                              labelColor: Colors.black,
+                              labelColor: Colors.white,
                               padding: const EdgeInsets.symmetric(horizontal: 12),
                               indicator: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
-                                color: AppTheme.primarySwatch.shade50
+                                color: AppTheme.primarySwatch.shade200
                               ),
+                              unselectedLabelColor: Colors.black,
                               tabs: tabs,
-
                             ),
                             /*Row(
                               mainAxisSize: MainAxisSize.max,
