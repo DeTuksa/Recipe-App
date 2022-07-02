@@ -5,6 +5,7 @@ import 'package:daisy_recipe/app/modules/widgets/ingredient_widget.dart';
 import 'package:daisy_recipe/app/modules/widgets/instruction_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:flutter_html/flutter_html.dart';
 
 class RecipeDetailsView extends StatefulWidget {
 
@@ -73,81 +74,85 @@ class _RecipeDetailsViewState extends State<RecipeDetailsView> {
             ),
             Container(
               child: DraggableScrollableSheet(
-                initialChildSize: 0.7,
-                minChildSize: 0.7,
-                maxChildSize: 0.9,
+                initialChildSize: 0.75,
+                minChildSize: 0.75,
+                maxChildSize: 0.8,
                 builder: (BuildContext context, myScrollController) {
-                  return Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10)
-                    ),
-                    child: DefaultTabController(
-                      length: 2,
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          AppSpacer.H16,
-                          TabBar(
-                            indicatorColor: Colors.white,
-                            labelColor: Colors.black,
-                            padding: const EdgeInsets.symmetric(horizontal: 12),
-                            indicator: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: AppTheme.primarySwatch.shade50
-                            ),
-                            tabs: tabs,
-
-                          ),
-                          /*Row(
-                            mainAxisSize: MainAxisSize.max,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Container(
-                                padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
-                                decoration: BoxDecoration(
-                                    color: AppTheme.primarySwatch.shade50,
-                                    borderRadius: BorderRadius.circular(10)
-                                ),
-                                child: const Center(
-                                  child: Text(
-                                    'Ingredients',
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 14
-                                    ),
-                                  ),
-                                ),
+                  return Material(
+                    elevation: 4,
+                    borderRadius: BorderRadius.circular(10),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10)
+                      ),
+                      child: DefaultTabController(
+                        length: 2,
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            AppSpacer.H16,
+                            TabBar(
+                              indicatorColor: Colors.white,
+                              labelColor: Colors.black,
+                              padding: const EdgeInsets.symmetric(horizontal: 12),
+                              indicator: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: AppTheme.primarySwatch.shade50
                               ),
-                              Container(
-                                padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
-                                decoration: BoxDecoration(
-                                    color: AppTheme.notificationBackground,
-                                    borderRadius: BorderRadius.circular(10)
-                                ),
-                                child: const Center(
-                                  child: Text(
-                                    'Instructions',
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 14
+                              tabs: tabs,
+
+                            ),
+                            /*Row(
+                              mainAxisSize: MainAxisSize.max,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Container(
+                                  padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
+                                  decoration: BoxDecoration(
+                                      color: AppTheme.primarySwatch.shade50,
+                                      borderRadius: BorderRadius.circular(10)
+                                  ),
+                                  child: const Center(
+                                    child: Text(
+                                      'Ingredients',
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 14
+                                      ),
                                     ),
                                   ),
                                 ),
-                              )
-                            ],
-                          ),*/
-                          AppSpacer.H10,
-                          Expanded(
-                            child: TabBarView(
-                              children: [
-                                IngredientsTab(myScrollController: myScrollController, recipe: widget.recipe),
-                                InstructionsTab(myScrollController: myScrollController, recipe: widget.recipe)
+                                Container(
+                                  padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
+                                  decoration: BoxDecoration(
+                                      color: AppTheme.notificationBackground,
+                                      borderRadius: BorderRadius.circular(10)
+                                  ),
+                                  child: const Center(
+                                    child: Text(
+                                      'Instructions',
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 14
+                                      ),
+                                    ),
+                                  ),
+                                )
                               ],
+                            ),*/
+                            AppSpacer.H10,
+                            Expanded(
+                              child: TabBarView(
+                                children: [
+                                  IngredientsTab(myScrollController: myScrollController, recipe: widget.recipe),
+                                  InstructionsTab(myScrollController: myScrollController, recipe: widget.recipe)
+                                ],
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   );
@@ -264,6 +269,12 @@ class InstructionsTab extends StatefulWidget {
 }
 
 class _InstructionsTabState extends State<InstructionsTab> {
+
+  Widget parseHtmlData() {
+    var htmlData = widget.recipe.instructions;
+    return Html(data: htmlData);
+  }
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -282,7 +293,7 @@ class _InstructionsTabState extends State<InstructionsTab> {
             ),
           ),
           AppSpacer.H10,
-          SizedBox(
+          /*SizedBox(
             child: Text(
               '${widget.recipe.instructions}',
               style: const TextStyle(
@@ -290,6 +301,9 @@ class _InstructionsTabState extends State<InstructionsTab> {
                   fontSize: 14,
               ),
             ),
+          ),*/
+          SizedBox(
+            child: parseHtmlData(),
           ),
           AppSpacer.H30,
           /*Row(
