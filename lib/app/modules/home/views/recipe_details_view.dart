@@ -90,7 +90,20 @@ class _RecipeDetailsViewState extends State<RecipeDetailsView> {
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
-                            AppSpacer.H16,
+                            AppSpacer.H32,
+                            Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 20),
+                              child: SizedBox(
+                                child: Text(
+                                  widget.recipe.title!,
+                                  style: const TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w700
+                                  ),
+                                ),
+                              ),
+                            ),
+                            AppSpacer.H32,
                             TabBar(
                               labelColor: Colors.white,
                               padding: const EdgeInsets.symmetric(horizontal: 12),
@@ -101,45 +114,6 @@ class _RecipeDetailsViewState extends State<RecipeDetailsView> {
                               unselectedLabelColor: Colors.black,
                               tabs: tabs,
                             ),
-                            /*Row(
-                              mainAxisSize: MainAxisSize.max,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Container(
-                                  padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
-                                  decoration: BoxDecoration(
-                                      color: AppTheme.primarySwatch.shade50,
-                                      borderRadius: BorderRadius.circular(10)
-                                  ),
-                                  child: const Center(
-                                    child: Text(
-                                      'Ingredients',
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 14
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
-                                  decoration: BoxDecoration(
-                                      color: AppTheme.notificationBackground,
-                                      borderRadius: BorderRadius.circular(10)
-                                  ),
-                                  child: const Center(
-                                    child: Text(
-                                      'Instructions',
-                                      style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 14
-                                      ),
-                                    ),
-                                  ),
-                                )
-                              ],
-                            ),*/
                             AppSpacer.H10,
                             Expanded(
                               child: TabBarView(
@@ -270,7 +244,9 @@ class _InstructionsTabState extends State<InstructionsTab> {
 
   Widget parseHtmlData() {
     var htmlData = widget.recipe.instructions;
-    return Html(data: htmlData);
+    return Html(
+        data: htmlData,
+    );
   }
 
   @override
@@ -304,28 +280,6 @@ class _InstructionsTabState extends State<InstructionsTab> {
             child: parseHtmlData(),
           ),
           AppSpacer.H30,
-          /*Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Text(
-                'Steps',
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 20,
-                    fontWeight: FontWeight.w600
-                ),
-              ),
-              Text(
-                '${widget.recipe.analyzedInstructions?.length} step(s)',
-                style: const TextStyle(
-                    color: AppTheme.notificationText,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500
-                ),
-              ),
-            ],
-          )*/
         ],
       ),
     );

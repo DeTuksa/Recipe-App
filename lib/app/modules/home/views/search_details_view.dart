@@ -89,7 +89,20 @@ class _SearchDetailsViewState extends State<SearchDetailsView> {
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
-                            AppSpacer.H16,
+                            AppSpacer.H32,
+                            Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 20),
+                              child: SizedBox(
+                                child: Text(
+                                  recipe.title!,
+                                  style: const TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w700
+                                  ),
+                                ),
+                              ),
+                            ),
+                            AppSpacer.H32,
                             TabBar(
                               labelColor: Colors.white,
                               padding: const EdgeInsets.symmetric(horizontal: 12),
@@ -304,28 +317,6 @@ class _InstructionsTabState extends State<InstructionsTab> {
             child: parseHtmlData(),
           ),
           AppSpacer.H30,
-          /*Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Text(
-                'Steps',
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 20,
-                    fontWeight: FontWeight.w600
-                ),
-              ),
-              Text(
-                '${widget.recipe.analyzedInstructions?.length} step(s)',
-                style: const TextStyle(
-                    color: AppTheme.notificationText,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500
-                ),
-              ),
-            ],
-          )*/
         ],
       ),
     );
