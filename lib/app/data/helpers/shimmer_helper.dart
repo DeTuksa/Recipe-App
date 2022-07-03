@@ -1,5 +1,6 @@
 import 'package:daisy_recipe/app/data/constants/spacers.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:shimmer/shimmer.dart';
 
 class ShimmerHelper {
@@ -151,6 +152,50 @@ class ShimmerHelper {
             ],
           );
         },
+      ),
+    );
+  }
+
+  Widget showSearchShimmer() {
+    return Shimmer.fromColors(
+      baseColor: Colors.grey.withOpacity(0.2),
+      highlightColor: Colors.grey.withOpacity(0.5),
+      child: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            AppSpacer.H16,
+            ...List.generate(
+                5, (index) => Center(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Column(
+                  children: [
+                    Container(
+                      height: 200, width: Get.width,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.grey.withOpacity(0.6),
+                      ),
+                    ),
+                    AppSpacer.H5,
+                    Container(
+                      width: Get.width,
+                      height: 15,
+                      decoration: BoxDecoration(
+                        color: Colors.grey.withOpacity(0.6),
+                        borderRadius: BorderRadius.circular(2)
+                      ),
+                    ),
+                    AppSpacer.H20,
+                  ],
+                ),
+              ),
+            )
+            )
+          ],
+        ),
       ),
     );
   }

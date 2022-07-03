@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:daisy_recipe/app/data/constants/spacers.dart';
+import 'package:daisy_recipe/app/data/helpers/shimmer_helper.dart';
 import 'package:daisy_recipe/app/modules/home/controllers/home_controller.dart';
 import 'package:daisy_recipe/app/modules/widgets/search_widget.dart';
 import 'package:flutter/material.dart';
@@ -51,14 +52,7 @@ class CustomSearchDelegate extends SearchDelegate {
 
     homeController.searchRecipe(query: query);
 
-    return Obx(() => homeController.searchLoading.value ? Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: const [
-        Center(
-          child: CircularProgressIndicator(),
-        )
-      ],
-    ) : SingleChildScrollView(
+    return Obx(() => homeController.searchLoading.value ? ShimmerHelper().showSearchShimmer() : SingleChildScrollView(
       physics: const BouncingScrollPhysics(),
       child: Column(
         mainAxisSize: MainAxisSize.max,
@@ -73,7 +67,6 @@ class CustomSearchDelegate extends SearchDelegate {
   @override
   Widget buildSuggestions(BuildContext context) {
     return Column();
-    throw UnimplementedError();
   }
 
 }
