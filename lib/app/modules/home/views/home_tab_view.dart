@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:daisy_recipe/app/data/constants/app_theme.dart';
 import 'package:daisy_recipe/app/data/constants/spacers.dart';
+import 'package:daisy_recipe/app/data/helpers/shimmer_helper.dart';
 import 'package:daisy_recipe/app/data/models/recipe_search_model.dart';
 import 'package:daisy_recipe/app/modules/home/controllers/home_controller.dart';
 import 'package:daisy_recipe/app/modules/home/views/all_recipes_view.dart';
@@ -123,9 +124,7 @@ class _HomeTabViewState extends State<HomeTabView> {
               width: Get.width,
               height: 250,
               child: homeController.loadingRecipes.value ?
-              const Center(
-                child: CircularProgressIndicator(),
-              ) : homeController.recipeList.isEmpty ? const Center(
+              ShimmerHelper().showTrendingShimmer() : homeController.recipeList.isEmpty ? const Center(
                 child: Text(
                     'No data found'
                 ),
@@ -155,9 +154,7 @@ class _HomeTabViewState extends State<HomeTabView> {
               width: Get.width,
               height: 250,
               child: homeController.loadingRecipes.value ?
-              const Center(
-                child: CircularProgressIndicator(),
-              ) : homeController.recipeList.isEmpty ? const Center(
+              ShimmerHelper().showPopularShimmer() : homeController.recipeList.isEmpty ? const Center(
                 child: Text(
                     'No data found'
                 ),
@@ -213,9 +210,7 @@ class _HomeTabViewState extends State<HomeTabView> {
               width: Get.width,
               height: 220,
               child: homeController.loadingCocktails.value ?
-                  const Center(
-                    child: CircularProgressIndicator(),
-                  ) : homeController.cocktailList.isEmpty ? const Center(
+              ShimmerHelper().showCocktailShimmer() : homeController.cocktailList.isEmpty ? const Center(
                 child: Text(
                   'No data found'
                 ),
