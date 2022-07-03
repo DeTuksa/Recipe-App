@@ -113,13 +113,16 @@ class _PopularCardState extends State<PopularCard> {
                       borderRadius: BorderRadius.circular(80),
                       border: Border.all(color: const Color(0xFFF1F1F1), width: 4)
                     ),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(80),
-                      child: widget.recipe.image != null ? Image.network(
-                        widget.recipe.image!,
-                        fit: BoxFit.fill,
-                      ) : Container(
-                        color: Colors.white,
+                    child: Hero(
+                      tag: widget.recipe.id!,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(80),
+                        child: widget.recipe.image != null ? Image.network(
+                          widget.recipe.image!,
+                          fit: BoxFit.fill,
+                        ) : Container(
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                   ),

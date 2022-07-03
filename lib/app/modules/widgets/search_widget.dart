@@ -33,12 +33,15 @@ class _SearchWidgetState extends State<SearchWidget> {
                   children: [
                     SizedBox(
                       width: Get.width, height: 200,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(10),
-                        child: Image.network(
-                          widget.recipe.image,
-                          fit: BoxFit.fill,
-                        )
+                      child: Hero(
+                        tag: widget.recipe.id,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
+                          child: Image.network(
+                            widget.recipe.image,
+                            fit: BoxFit.fill,
+                          )
+                        ),
                       ),
                     ),
                   ],

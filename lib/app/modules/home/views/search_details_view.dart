@@ -59,11 +59,14 @@ class _SearchDetailsViewState extends State<SearchDetailsView> {
                 children: [
                   SizedBox(
                     width: Get.width, height: 250,
-                    child: ClipRRect(
-                      child: recipe.image != null ? Image.network(
-                        recipe.image!,
-                        fit: BoxFit.fill,
-                      ) : const SizedBox(),
+                    child: Hero(
+                      tag: widget.id,
+                      child: ClipRRect(
+                        child: recipe.image != null ? Image.network(
+                          recipe.image!,
+                          fit: BoxFit.fill,
+                        ) : const SizedBox(),
+                      ),
                     ),
                   ),
                   AppSpacer.H16,

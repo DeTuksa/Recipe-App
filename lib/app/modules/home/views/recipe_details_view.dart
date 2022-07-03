@@ -60,11 +60,14 @@ class _RecipeDetailsViewState extends State<RecipeDetailsView> {
                   AppSpacer.H20,*/
                   SizedBox(
                     width: Get.width, height: 250,
-                    child: ClipRRect(
-                      child: widget.recipe.image != null ? Image.network(
-                        widget.recipe.image!,
-                        fit: BoxFit.fill,
-                      ) : const SizedBox(),
+                    child: Hero(
+                      tag: widget.recipe.id!,
+                      child: ClipRRect(
+                        child: widget.recipe.image != null ? Image.network(
+                          widget.recipe.image!,
+                          fit: BoxFit.fill,
+                        ) : const SizedBox(),
+                      ),
                     ),
                   ),
                   AppSpacer.H16,

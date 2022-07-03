@@ -34,12 +34,15 @@ class _TrendingCardState extends State<TrendingCard> {
                   children: [
                     SizedBox(
                       width: 280, height: 180,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(10),
-                        child: widget.recipe.image != null ? Image.network(
-                          widget.recipe.image!,
-                          fit: BoxFit.fill,
-                        ) : const SizedBox(),
+                      child: Hero(
+                        tag: widget.recipe.id!,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
+                          child: widget.recipe.image != null ? Image.network(
+                            widget.recipe.image!,
+                            fit: BoxFit.fill,
+                          ) : const SizedBox(),
+                        ),
                       ),
                     ),
                     /*Align(
