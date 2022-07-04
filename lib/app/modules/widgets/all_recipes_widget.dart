@@ -33,12 +33,15 @@ class _AllRecipesWidgetState extends State<AllRecipesWidget> {
                   children: [
                     SizedBox(
                       width: Get.width, height: 200,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(10),
-                        child: widget.recipe.image != null ? Image.network(
-                          widget.recipe.image!,
-                          fit: BoxFit.fill,
-                        ) : const SizedBox(),
+                      child: Hero(
+                        tag: widget.recipe.id!,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
+                          child: widget.recipe.image != null ? Image.network(
+                            widget.recipe.image!,
+                            fit: BoxFit.fill,
+                          ) : const SizedBox(),
+                        ),
                       ),
                     ),
                     /*Align(

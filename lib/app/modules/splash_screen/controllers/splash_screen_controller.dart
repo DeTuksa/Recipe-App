@@ -32,7 +32,7 @@ class SplashScreenController extends GetxController {
     if(token != null && token.isNotEmpty) {
       Get.to(HomeView(), binding: HomeBinding());
     } else {
-      Get.off(const WaitingScreenView());
+      Get.to(HomeView(), binding: HomeBinding());
     }
   }
 

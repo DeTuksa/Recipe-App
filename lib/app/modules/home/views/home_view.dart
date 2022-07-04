@@ -42,7 +42,7 @@ class HomeView extends GetView<HomeController> {
             return ctrl.body[ctrl.bodyIndex.value];
           },
         ),
-        bottomNavigationBar: BottomAppBar(
+        /*bottomNavigationBar: BottomAppBar(
           shape: const CircularNotchedRectangle(),
           notchMargin: 6.0,
           child: Container(
@@ -56,7 +56,7 @@ class HomeView extends GetView<HomeController> {
                   asset: homeCtrl.bodyIndex.value == 0 ? AssetPath.homeActive : AssetPath.homeInactive,
                   function: () => homeCtrl.changeBodyIndex(0),
                 )),
-                /*Obx(() => CustomBottomItem(
+                *//*Obx(() => CustomBottomItem(
                   asset: homeCtrl.bodyIndex.value == 1 ? AssetPath.bookmarkActive : AssetPath.bookmarkInactive,
                   function: () => homeCtrl.changeBodyIndex(1),
                 )),
@@ -64,7 +64,7 @@ class HomeView extends GetView<HomeController> {
                 Obx(() => CustomBottomItem(
                   asset: homeCtrl.bodyIndex.value == 2 ? AssetPath.notificationActive : AssetPath.notificationInactive,
                   function: () => homeCtrl.changeBodyIndex(2),
-                )),*/
+                )),*//*
                 Obx(() => CustomBottomItem(
                   asset: homeCtrl.bodyIndex.value == 1 ? AssetPath.profileActive : AssetPath.profileInactive,
                   function: () => homeCtrl.changeBodyIndex(1),
@@ -72,7 +72,7 @@ class HomeView extends GetView<HomeController> {
               ],
             ),
           ),
-        ),
+        ),*/
         /*floatingActionButton: FloatingActionButton(
           onPressed: () {},
           backgroundColor: AppTheme.primaryRed,
