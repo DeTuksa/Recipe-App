@@ -4,15 +4,18 @@ import 'package:daisy_recipe/app/notification_controller.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:overlay_support/overlay_support.dart';
 
 import 'app/modules/home/controllers/home_controller.dart';
 import 'app/routes/app_pages.dart';
 
-void main() {
+void main() async {
   Get.lazyPut<HomeController>(()=> HomeController(), fenix: true);
   Get.put(AuthenticationController());
-  runApp(MyApp(),);
+  WidgetsFlutterBinding.ensureInitialized();
+  await MobileAds.instance.initialize();
+  runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget {
@@ -23,6 +26,11 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return OverlaySupport(

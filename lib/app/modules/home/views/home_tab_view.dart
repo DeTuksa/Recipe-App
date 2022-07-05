@@ -13,6 +13,7 @@ import 'package:daisy_recipe/app/modules/widgets/trending_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class HomeTabView extends StatefulWidget {
   const HomeTabView({Key? key}) : super(key: key);
@@ -34,6 +35,15 @@ class _HomeTabViewState extends State<HomeTabView> {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.max,
           children:  [
+            if (homeController.bannerAd != null)
+              Align(
+                alignment: Alignment.topCenter,
+                child: Container(
+                  width: homeController.bannerAd!.size.width.toDouble(),
+                  height: homeController.bannerAd!.size.height.toDouble(),
+                  child: AdWidget(ad: homeController.bannerAd!),
+                ),
+              ),
             const Padding(
               padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
               child: Text(

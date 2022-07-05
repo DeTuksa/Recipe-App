@@ -1,3 +1,4 @@
+import 'package:daisy_recipe/app/data/helpers/ad_helper.dart';
 import 'package:daisy_recipe/app/data/models/cocktail_model.dart';
 import 'package:daisy_recipe/app/data/models/recipe_model.dart';
 import 'package:daisy_recipe/app/data/models/recipe_search_model.dart';
@@ -11,6 +12,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:daisy_recipe/app/notification_controller.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class HomeController extends GetxController {
   //TODO: Implement HomeController
@@ -19,6 +21,7 @@ class HomeController extends GetxController {
   RecipeResponse? recipeResponse;
   Cocktail? cocktail;
   String searchQuery = '';
+  BannerAd? bannerAd;
 
   final count = 0.obs;
   List<Widget> body = <Widget>[
@@ -37,9 +40,14 @@ class HomeController extends GetxController {
   var searchDetailsLoading = false.obs;
   SearchByIdResponse? searchById;
 
+  AppOpenAd? appOpenAd;
+  bool isShowingOpenAd = false;
+
   @override
   void onInit() {
-    Get.put(NotificationController());
+    getBannerAd();
+    loadOpenAd();
+    listenToAppStateChanges();
     fetchRandomCocktails();
     fetchRandomRecipes();
     super.onInit();
@@ -53,6 +61,111 @@ class HomeController extends GetxController {
   @override
   void onClose() {}
   void increment() => count.value++;
+
+  bool isBannerLoaded = false;
+
+  //
+  void getBannerAd() {
+    RequestConfiguration(
+      testDeviceIds: ["427E01285D17CDCA682D776E64633B96"]
+    );
+    bannerAd = BannerAd(
+      adUnitId: AdHelper.bannerAdUnitId,
+      size: AdSize.banner,
+      request: AdRequest(),
+      listener: BannerAdListener(
+        onAdLoaded: (_) {
+          isBannerLoaded = true;
+          update();
+        },
+        onAdFailedToLoad: (ad, error) {
+          // Releases an ad resource when it fails to load
+          ad.dispose();
+
+          print('Ad load failed (code=${error.code} message=${error.message})');
+        },
+      ),
+    );
+
+    // TODO: Load an ad
+    bannerAd?.load();
+
+    update();
+  }
+
+  void loadOpenAd() {
+    AppOpenAd.load(
+      adUnitId: AdHelper.appOpenAdUnitId,
+      orientation: AppOpenAd.orientationPortrait,
+      request: AdRequest(),
+      adLoadCallback: AppOpenAdLoadCallback(
+        onAdLoaded: (ad) {
+          appOpenAd = ad;
+          update();
+        },
+        onAdFailedToLoad: (error) {
+          print('AppOenAd failed to load: $error');
+        }
+      )
+    );
+    update();
+  }
+
+  void showAdIfAvailable() {
+    if (!isOpenAdAvailable) {
+      print('Tried to show ad before available.');
+      loadOpenAd();
+      return;
+    }
+    if (isShowingOpenAd) {
+      print('Tried to show ad while already showing an ad.');
+      return;
+    }
+    // Set the fullScreenContentCallback and show the ad.
+    appOpenAd!.fullScreenContentCallback = FullScreenContentCallback(
+      onAdShowedFullScreenContent: (ad) {
+        isShowingOpenAd = true;
+        print('$ad onAdShowedFullScreenContent');
+      },
+      onAdFailedToShowFullScreenContent: (ad, error) {
+        print('$ad onAdFailedToShowFullScreenContent: $error');
+        isShowingOpenAd = false;
+        ad.dispose();
+        appOpenAd = null;
+      },
+      onAdDismissedFullScreenContent: (ad) {
+        print('$ad onAdDismissedFullScreenContent');
+        isShowingOpenAd = false;
+        ad.dispose();
+        appOpenAd = null;
+        loadOpenAd();
+      },
+    );
+    update();
+  }
+
+  bool get isOpenAdAvailable {
+    return appOpenAd != null;
+  }
+
+
+  void listenToAppStateChanges() {
+    print('Listening');
+    AppStateEventNotifier.startListening();
+    AppStateEventNotifier.appStateStream
+        .forEach((state) => onAppStateChanged(state));
+    update();
+  }
+
+  void onAppStateChanged(AppState appState) {
+    // Try to show an app open ad if the app is being resumed and
+    // we're not already showing an app open ad.
+    if (appState == AppState.foreground) {
+      showAdIfAvailable();
+      print("Should show here");
+    }
+    update();
+  }
 
   changeBodyIndex(int newIndex) {
     bodyIndex.value = newIndex;

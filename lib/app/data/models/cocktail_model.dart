@@ -23,6 +23,7 @@ class Drink {
   String? strVideo;
   String? strCategory;
   String? strIBA;
+  String? strAlcoholic;
   String? strGlass;
   String? strInstructions;
   String? strDrinkThumb;
@@ -71,6 +72,7 @@ class Drink {
     this.strDrinkThumb,
     this.strGlass,
     this.strIBA,
+    this.strAlcoholic,
     this.strImageAttribution,
     this.strImageSource,
     this.strIngredient12,
@@ -114,6 +116,7 @@ class Drink {
       strDrink: json['strDrink'],
       strCategory: json['strCategory'],
       strGlass: json['strGlass'],
+      strAlcoholic: json['strAlcoholic'],
       strDrinkThumb: json['strDrinkThumb'],
       strInstructions: json['strInstructions'],
       strIngredient1: json['strIngredient1'],
