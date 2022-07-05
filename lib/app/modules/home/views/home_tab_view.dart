@@ -3,8 +3,8 @@ import 'dart:io';
 import 'package:daisy_recipe/app/data/constants/app_theme.dart';
 import 'package:daisy_recipe/app/data/constants/spacers.dart';
 import 'package:daisy_recipe/app/data/helpers/shimmer_helper.dart';
-import 'package:daisy_recipe/app/data/models/recipe_search_model.dart';
 import 'package:daisy_recipe/app/modules/home/controllers/home_controller.dart';
+import 'package:daisy_recipe/app/modules/home/views/all_cocktails_view.dart';
 import 'package:daisy_recipe/app/modules/home/views/all_recipes_view.dart';
 import 'package:daisy_recipe/app/modules/home/views/search_view.dart';
 import 'package:daisy_recipe/app/modules/widgets/popular_card.dart';
@@ -38,7 +38,7 @@ class _HomeTabViewState extends State<HomeTabView> {
             if (homeController.bannerAd != null)
               Align(
                 alignment: Alignment.topCenter,
-                child: Container(
+                child: SizedBox(
                   width: homeController.bannerAd!.size.width.toDouble(),
                   height: homeController.bannerAd!.size.height.toDouble(),
                   child: AdWidget(ad: homeController.bannerAd!),
@@ -193,24 +193,27 @@ class _HomeTabViewState extends State<HomeTabView> {
                         fontWeight: FontWeight.w700
                     ),
                   ),
-                  Row(
-                    children: [
-                      const Text(
-                        'See all',
-                        style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w700,
-                            color: AppTheme.primaryRed
+                  GestureDetector(
+                    onTap: () => Get.to(const AllCocktailsView()),
+                    child: Row(
+                      children: [
+                        const Text(
+                          'See all',
+                          style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w700,
+                              color: AppTheme.primaryRed
+                          ),
                         ),
-                      ),
-                      AppSpacer.W5,
-                      Icon(
-                        Platform.isIOS ?
-                        Icons.arrow_forward_ios :
-                        Icons.arrow_forward,
-                        color: AppTheme.primaryRed,
-                      )
-                    ],
+                        AppSpacer.W5,
+                        Icon(
+                          Platform.isIOS ?
+                          Icons.arrow_forward_ios :
+                          Icons.arrow_forward,
+                          color: AppTheme.primaryRed,
+                        )
+                      ],
+                    ),
                   )
                 ],
               ),
