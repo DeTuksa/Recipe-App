@@ -47,16 +47,15 @@ class _AllCocktailsTileState extends State<AllCocktailsTile> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Row(
-                    children: [
-                      Text(
-                        widget.cocktail.strDrink,
-                        style: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600
-                        ),
+                  SizedBox(
+                    width: Get.width * 0.4,
+                    child: Text(
+                      widget.cocktail.strDrink,
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600
                       ),
-                    ],
+                    ),
                   ),
                   AppSpacer.H5,
                   Text(

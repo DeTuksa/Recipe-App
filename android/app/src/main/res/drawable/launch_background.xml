@@ -3,6 +3,6 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:drawable="@color/white" />
     <item>
-        <bitmap android:gravity="fill" android:src="@drawable/background"/>
+        <bitmap android:gravity="center" android:src="@drawable/background"/>
     </item>
 </layer-list>

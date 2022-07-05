@@ -20,19 +20,23 @@ class SplashScreenView extends GetView<SplashScreenController> {
         builder: (ctrl) {
           return Stack(
             children: [
-              SizedBox(
+              Container(
                 width: Get.width,
                 height: Get.height,
-                child: Image.asset(
-                  AssetPath.backgroundImage,
-                  fit: BoxFit.fill,
-                ),
+                color: const Color(0xFFEFEEF8),
               ),
               Container(
                 width: Get.width,
                 height: Get.height,
                 color: const Color.fromRGBO(6, 9, 16, 0.6),
               ),
+              Align(
+                alignment: Alignment.center,
+                child: Image.asset(
+                  AssetPath.backgroundImage,
+                  fit: BoxFit.fill,
+                ),
+              )
               /*Align(
             alignment: Alignment.bottomCenter,
             child: Padding(
