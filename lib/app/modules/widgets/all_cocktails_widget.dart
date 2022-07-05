@@ -31,11 +31,14 @@ class _AllCocktailsTileState extends State<AllCocktailsTile> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
                 ),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(12),
-                  child: widget.cocktail.strDrinkThumb == null ? SizedBox() : Image.network(
-                    widget.cocktail.strDrinkThumb!,
-                    fit: BoxFit.fill,
+                child: Hero(
+                  tag: widget.cocktail.idDrink!,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(12),
+                    child: widget.cocktail.strDrinkThumb == null ? SizedBox() : Image.network(
+                      widget.cocktail.strDrinkThumb!,
+                      fit: BoxFit.fill,
+                    ),
                   ),
                 ),
               ),

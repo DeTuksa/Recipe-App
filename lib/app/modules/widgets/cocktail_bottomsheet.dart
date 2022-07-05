@@ -52,13 +52,16 @@ class _CocktailBottomSheetState extends State<CocktailBottomSheet> {
                 child: Container(
                   height: 120, width: 120,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(40)
+                    borderRadius: BorderRadius.circular(20)
                   ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(40),
-                    child: Image.network(
-                      widget.cocktail.strDrinkThumb!,
-                      fit: BoxFit.fill,
+                  child: Hero(
+                    tag: widget.cocktail.idDrink!,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(20),
+                      child: Image.network(
+                        widget.cocktail.strDrinkThumb!,
+                        fit: BoxFit.fill,
+                      ),
                     ),
                   ),
                 ),
@@ -124,8 +127,10 @@ class _CocktailBottomSheetState extends State<CocktailBottomSheet> {
                 ],
               ),
               AppSpacer.H16,
+              AppSpacer.H16,
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                width: Get.width,
                 decoration: BoxDecoration(
                   color: AppTheme.notificationBackground,
                   borderRadius: BorderRadius.circular(10)

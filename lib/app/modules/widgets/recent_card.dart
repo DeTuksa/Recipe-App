@@ -31,11 +31,14 @@ class _RecentCardState extends State<RecentCard> {
                     borderRadius: BorderRadius.circular(12)
                   ),
                   width: 125, height: 125,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(12),
-                    child: Image.network(
-                      widget.drink.strDrinkThumb!,
-                      fit: BoxFit.fill,
+                  child: Hero(
+                    tag: widget.drink.idDrink!,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(12),
+                      child: Image.network(
+                        widget.drink.strDrinkThumb!,
+                        fit: BoxFit.fill,
+                      ),
                     ),
                   ),
                 ),
