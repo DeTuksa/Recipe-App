@@ -1,10 +1,12 @@
 import 'package:daisy_recipe/app/data/constants/app_theme.dart';
 import 'package:daisy_recipe/app/data/constants/spacers.dart';
 import 'package:daisy_recipe/app/data/models/recipe_model.dart';
+import 'package:daisy_recipe/app/modules/home/controllers/home_controller.dart';
 import 'package:daisy_recipe/app/modules/widgets/ingredient_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class RecipeDetailsView extends StatefulWidget {
 
@@ -17,6 +19,8 @@ class RecipeDetailsView extends StatefulWidget {
 }
 
 class _RecipeDetailsViewState extends State<RecipeDetailsView> {
+
+  final homeController = Get.find<HomeController>();
 
   final tabs = <Tab>[
     const Tab(
@@ -117,6 +121,16 @@ class _RecipeDetailsViewState extends State<RecipeDetailsView> {
                               unselectedLabelColor: Colors.black,
                               tabs: tabs,
                             ),
+                            AppSpacer.H10,
+                            if (homeController.bannerAd != null)
+                              Align(
+                                alignment: Alignment.topCenter,
+                                child: SizedBox(
+                                  width: homeController.bannerAd!.size.width.toDouble(),
+                                  height: homeController.bannerAd!.size.height.toDouble(),
+                                  child: AdWidget(ad: homeController.bannerAdRecipeDetails!),
+                                ),
+                              ),
                             AppSpacer.H10,
                             Expanded(
                               child: TabBarView(

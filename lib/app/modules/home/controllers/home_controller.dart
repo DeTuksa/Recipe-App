@@ -22,6 +22,7 @@ class HomeController extends GetxController {
   Cocktail? cocktail;
   String searchQuery = '';
   BannerAd? bannerAd;
+  BannerAd? bannerAdRecipeDetails;
 
   final count = 0.obs;
   List<Widget> body = <Widget>[
@@ -46,6 +47,7 @@ class HomeController extends GetxController {
   @override
   void onInit() {
     getBannerAd();
+    getRecipeBannerAd();
     loadOpenAd();
     listenToAppStateChanges();
     fetchRandomCocktails();
@@ -59,10 +61,15 @@ class HomeController extends GetxController {
   }
 
   @override
-  void onClose() {}
+  void onClose() {
+   bannerAd?.dispose();
+   bannerAdRecipeDetails?.dispose();
+   super.onClose();
+  }
   void increment() => count.value++;
 
   bool isBannerLoaded = false;
+  bool isRecipeBannerLoaded = false;
 
   //
   void getBannerAd() {
@@ -89,6 +96,34 @@ class HomeController extends GetxController {
 
     // TODO: Load an ad
     bannerAd?.load();
+
+    update();
+  }
+
+  void getRecipeBannerAd() {
+    RequestConfiguration(
+        testDeviceIds: ["427E01285D17CDCA682D776E64633B96"]
+    );
+    bannerAdRecipeDetails = BannerAd(
+      adUnitId: AdHelper.bannerAdUnitId,
+      size: AdSize.banner,
+      request: AdRequest(),
+      listener: BannerAdListener(
+        onAdLoaded: (_) {
+          isRecipeBannerLoaded = true;
+          update();
+        },
+        onAdFailedToLoad: (ad, error) {
+          // Releases an ad resource when it fails to load
+          ad.dispose();
+
+          print('Ad load failed (code=${error.code} message=${error.message})');
+        },
+      ),
+    );
+
+    // TODO: Load an ad
+    bannerAdRecipeDetails?.load();
 
     update();
   }
