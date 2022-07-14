@@ -19,7 +19,10 @@ class _RecentCardState extends State<RecentCard> {
       children: [
         AppSpacer.W10,
         GestureDetector(
-          onTap: () => Get.bottomSheet(CocktailBottomSheet(cocktail: widget.drink)),
+          onTap: () => Get.bottomSheet(
+              CocktailBottomSheet(cocktail: widget.drink),
+            isScrollControlled: true
+          ),
           child: SizedBox(
             width: 125,
             height: 220,
