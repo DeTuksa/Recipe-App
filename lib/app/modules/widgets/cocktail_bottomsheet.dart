@@ -23,6 +23,10 @@ class _CocktailBottomSheetState extends State<CocktailBottomSheet> {
       child: Container(
         // height: Get.height * 0.6,
         padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 12),
+        constraints: BoxConstraints(
+            maxHeight: MediaQuery.of(context).size.height,
+            maxWidth: MediaQuery.of(context).size.width
+        ),
         width: Get.width,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10)
@@ -259,7 +263,7 @@ class _CocktailBottomSheetState extends State<CocktailBottomSheet> {
                     ),
                     AppSpacer.H16,
                     const Text(
-                      'Ingredients',
+                      'Instructions',
                       style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.w600

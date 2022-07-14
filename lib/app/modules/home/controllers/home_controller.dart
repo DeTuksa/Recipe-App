@@ -73,9 +73,6 @@ class HomeController extends GetxController {
 
   //
   void getBannerAd() {
-    RequestConfiguration(
-      testDeviceIds: ["427E01285D17CDCA682D776E64633B96"]
-    );
     bannerAd = BannerAd(
       adUnitId: AdHelper.bannerAdUnitId,
       size: AdSize.banner,
@@ -101,9 +98,6 @@ class HomeController extends GetxController {
   }
 
   void getRecipeBannerAd() {
-    RequestConfiguration(
-        testDeviceIds: ["427E01285D17CDCA682D776E64633B96"]
-    );
     bannerAdRecipeDetails = BannerAd(
       adUnitId: AdHelper.bannerAdUnitId,
       size: AdSize.banner,
@@ -124,8 +118,7 @@ class HomeController extends GetxController {
 
     // TODO: Load an ad
     bannerAdRecipeDetails?.load();
-
-    update();
+    // update();
   }
 
   void loadOpenAd() {

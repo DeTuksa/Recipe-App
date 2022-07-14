@@ -285,7 +285,7 @@ class InstructionsTab extends StatefulWidget {
 class _InstructionsTabState extends State<InstructionsTab> {
 
   Widget parseHtmlData() {
-    var htmlData = widget.recipe.instructions;
+    var htmlData = widget.recipe.instructions ?? widget.recipe.summary;
     return Html(data: htmlData);
   }
 

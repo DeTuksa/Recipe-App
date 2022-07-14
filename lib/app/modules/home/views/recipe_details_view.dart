@@ -32,6 +32,12 @@ class _RecipeDetailsViewState extends State<RecipeDetailsView> {
   ];
 
   @override
+  void initState() {
+    homeController.getRecipeBannerAd();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
@@ -122,12 +128,12 @@ class _RecipeDetailsViewState extends State<RecipeDetailsView> {
                               tabs: tabs,
                             ),
                             AppSpacer.H10,
-                            if (homeController.bannerAd != null)
+                            if (homeController.bannerAdRecipeDetails != null)
                               Align(
                                 alignment: Alignment.topCenter,
                                 child: SizedBox(
-                                  width: homeController.bannerAd!.size.width.toDouble(),
-                                  height: homeController.bannerAd!.size.height.toDouble(),
+                                  width: homeController.bannerAdRecipeDetails!.size.width.toDouble(),
+                                  height: homeController.bannerAdRecipeDetails!.size.height.toDouble(),
                                   child: AdWidget(ad: homeController.bannerAdRecipeDetails!),
                                 ),
                               ),
