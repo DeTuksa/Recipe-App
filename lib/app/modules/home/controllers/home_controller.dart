@@ -48,7 +48,7 @@ class HomeController extends GetxController {
   void onInit() {
     getBannerAd();
     getRecipeBannerAd();
-    loadOpenAd();
+    // loadOpenAd();
     listenToAppStateChanges();
     fetchRandomCocktails();
     fetchRandomRecipes();

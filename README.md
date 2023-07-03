@@ -1,16 +1,16 @@
-# daisy_recipe
+# Recipedia
 
-A new Flutter project.
+# About.
 
-## Getting Started
+This is a mobile application built with flutter that allows users find food recipes as well as cocktail recipes, including ingredients and instructions.
 
-This project is a starting point for a Flutter application.
+It also allows users to search recipes by name.
 
-A few resources to get you started if this is your first Flutter project:
+## App Images
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+|                Home Screen                 |             Recipe Ingredients Screen             |
+|:------------------------------------------:|:-------------------------------------------------:|
+| ![Screenshot](screenshots/home_screen.jpg) | ![Screenshot](screenshots/ingredients_screen.jpg) |
+|             Recipe List Screen             |            Recipe Instructions Screen             |
+| ![Screenshot](screenshots/list_screen.jpg) | ![Screenshot](screenshots/instruction_screen.jpg) |
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
